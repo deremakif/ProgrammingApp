@@ -1,4 +1,5 @@
-﻿using Programming.DAL;
+﻿using Programming.API.Attributes;
+using Programming.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ using System.Web.Http.Description;
 
 namespace Programming.API.Controllers
 {
+
     public class LanguagesController : ApiController
     {
         LanguagesDAL languageDAL = new LanguagesDAL();
@@ -16,7 +18,7 @@ namespace Programming.API.Controllers
 
         public IHttpActionResult GetSearchByName(string name)
         {
-            return Ok("Name: "+name);
+            return Ok("Name: " + name);
         }
         public IHttpActionResult GetSearchBySurname(string surname)
         {
@@ -27,7 +29,7 @@ namespace Programming.API.Controllers
         public IHttpActionResult Get()
         {
             var languages = languageDAL.GetAllLanguages();
-            return Ok(languages);    
+            return Ok(languages);
             //Request.CreateResponse(HttpStatusCode.OK, languages);
         }
 
@@ -35,7 +37,7 @@ namespace Programming.API.Controllers
         public IHttpActionResult Get(int id)
         {
             var language = languageDAL.GetLanguageById(id);
-            if(language == null)
+            if (language == null)
             {
                 return NotFound();
             }
@@ -58,7 +60,7 @@ namespace Programming.API.Controllers
         public IHttpActionResult Put(int id, Languages language)
         {
             // id'ye ait kayıt yoksa
-            if (languageDAL.IsThereAnyLanguage(id)==false)
+            if (languageDAL.IsThereAnyLanguage(id) == false)
             {
                 return NotFound();
             }
@@ -78,7 +80,7 @@ namespace Programming.API.Controllers
 
         public IHttpActionResult Delete(int id)
         {
-            if (languageDAL.IsThereAnyLanguage(id)==false)
+            if (languageDAL.IsThereAnyLanguage(id) == false)
             {
                 return NotFound();
             }
