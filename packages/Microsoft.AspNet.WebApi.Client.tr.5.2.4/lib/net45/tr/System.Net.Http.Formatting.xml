@@ -1,0 +1,2239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Net.Http.Formatting</name>
+  </assembly>
+  <members>
+    <member name="T:System.Net.Http.ByteRangeStreamContent">
+      <summary>
+        <see cref="T:System.Net.Http.HttpContent" /> HTTP 206 (Kısmi İçerik) bayt aralığı yanıtları oluşturmak için kullanılan bir akış üzerinden bayt aralığı görünümü sağlayan uygulama.<see cref="T:System.Net.Http.ByteRangeStreamContent" />, aralıkların ardışık olup olmadığına bakılmaksızın bir veya daha fazla bayt aralığını destekler.Yalnızca bir aralık varsa, bu durumda Content-Range üstbilgisini içeren tek bir kısmi yanıt gövdesi oluşturulur.Birden çok aralık varsa, her bir gövde kısmının ilişkili Content-Range üstbilgisi alanı tarafından gösterilen bir aralık içerdiği çok bölümlü/bayt aralıkları yanıtı oluşturulur.</summary>
+    </member>
+    <member name="M:System.Net.Http.ByteRangeStreamContent.#ctor(System.IO.Stream,System.Net.Http.Headers.RangeHeaderValue,System.Net.Http.Headers.MediaTypeHeaderValue)">
+      <summary>
+        <see cref="T:System.Net.Http.HttpContent" /> HTTP 206 (Kısmi İçerik) bayt aralığı yanıtları oluşturmak için kullanılan bir akış üzerinden bayt aralığı görünümü sağlayan uygulama.İstenilen aralıkların hiçbiri content parametresi ile temsil edilen seçili kaynağın geçerli uzantısıyla çakışmıyorsa, içeriğin geçerli Content-Range değerini gösteren bir <see cref="T:System.Net.Http.InvalidByteRangeException" /> oluşturulur.</summary>
+      <param name="content">Üzerinden bir bayt aralığı görünümü oluşturulacak akış.</param>
+      <param name="range">Genellikle Aralık HTTP isteği üstbilgi alanından elde edilen aralık veya aralıklar.</param>
+      <param name="mediaType">İçerik akışının medya türü.</param>
+    </member>
+    <member name="M:System.Net.Http.ByteRangeStreamContent.#ctor(System.IO.Stream,System.Net.Http.Headers.RangeHeaderValue,System.Net.Http.Headers.MediaTypeHeaderValue,System.Int32)">
+      <summary>
+        <see cref="T:System.Net.Http.HttpContent" /> HTTP 206 (Kısmi İçerik) bayt aralığı yanıtları oluşturmak için kullanılan bir akış üzerinden bayt aralığı görünümü sağlayan uygulama.İstenilen aralıkların hiçbiri content parametresi ile temsil edilen seçili kaynağın geçerli uzantısıyla çakışmıyorsa, içeriğin geçerli Content-Range değerini gösteren bir <see cref="T:System.Net.Http.InvalidByteRangeException" /> oluşturulur.</summary>
+      <param name="content">Üzerinden bir bayt aralığı görünümü oluşturulacak akış.</param>
+      <param name="range">Genellikle Aralık HTTP isteği üstbilgi alanından elde edilen aralık veya aralıklar.</param>
+      <param name="mediaType">İçerik akışının medya türü.</param>
+      <param name="bufferSize">İçerik akışı kopyalanırken kullanılan arabellek boyutu.</param>
+    </member>
+    <member name="M:System.Net.Http.ByteRangeStreamContent.#ctor(System.IO.Stream,System.Net.Http.Headers.RangeHeaderValue,System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.HttpContent" /> HTTP 206 (Kısmi İçerik) bayt aralığı yanıtları oluşturmak için kullanılan bir akış üzerinden bayt aralığı görünümü sağlayan uygulama.İstenilen aralıkların hiçbiri content parametresi ile temsil edilen seçili kaynağın geçerli uzantısıyla çakışmıyorsa, içeriğin geçerli Content-Range değerini gösteren bir <see cref="T:System.Net.Http.InvalidByteRangeException" /> oluşturulur.</summary>
+      <param name="content">Üzerinden bir bayt aralığı görünümü oluşturulacak akış.</param>
+      <param name="range">Genellikle Aralık HTTP isteği üstbilgi alanından elde edilen aralık veya aralıklar.</param>
+      <param name="mediaType">İçerik akışının medya türü.</param>
+    </member>
+    <member name="M:System.Net.Http.ByteRangeStreamContent.#ctor(System.IO.Stream,System.Net.Http.Headers.RangeHeaderValue,System.String,System.Int32)">
+      <summary>
+        <see cref="T:System.Net.Http.HttpContent" /> HTTP 206 (Kısmi İçerik) bayt aralığı yanıtları oluşturmak için kullanılan bir akış üzerinden bayt aralığı görünümü sağlayan uygulama.İstenilen aralıkların hiçbiri content parametresi ile temsil edilen seçili kaynağın geçerli uzantısıyla çakışmıyorsa, içeriğin geçerli Content-Range değerini gösteren bir <see cref="T:System.Net.Http.InvalidByteRangeException" /> oluşturulur.</summary>
+      <param name="content">Üzerinden bir bayt aralığı görünümü oluşturulacak akış.</param>
+      <param name="range">Genellikle Aralık HTTP isteği üstbilgi alanından elde edilen aralık veya aralıklar.</param>
+      <param name="mediaType">İçerik akışının medya türü.</param>
+      <param name="bufferSize">İçerik akışı kopyalanırken kullanılan arabellek boyutu.</param>
+    </member>
+    <member name="M:System.Net.Http.ByteRangeStreamContent.Dispose(System.Boolean)">
+      <summary>
+        <see cref="T:System.Net.Http.ByteRangeStreamContent" /> sınıfının geçerli örneği tarafından kullanılan kaynakları serbest bırakır.</summary>
+      <param name="disposing">Yönetilen ve yönetilmeyen kaynakları serbest bırakmak için true; yalnızca yönetilmeyen kaynakları serbest bırakmak için false.</param>
+    </member>
+    <member name="M:System.Net.Http.ByteRangeStreamContent.SerializeToStreamAsync(System.IO.Stream,System.Net.TransportContext)">
+      <summary>Bayt aralığınız zaman uyumsuz olarak serileştirir ve bir HTTP içerik akışına yazar.</summary>
+      <returns>Eşzamansız işlemi temsil eden görev nesnesi.</returns>
+      <param name="stream">Hedef akış.</param>
+      <param name="context">Taşımayla ilgili bilgiler.</param>
+    </member>
+    <member name="M:System.Net.Http.ByteRangeStreamContent.TryComputeLength(System.Int64@)">
+      <summary>Bayt dizisinin bayt cinsinden geçerli bir uzunluğu olup olmadığını belirler.</summary>
+      <returns>Uzunluk geçerli ise true; değilse, false.</returns>
+      <param name="length">Bayt dizisinin bayt cinsinden uzunluğu.</param>
+    </member>
+    <member name="T:System.Net.Http.HttpClientExtensions">
+      <summary>
+        <see cref="T:System.Net.Http.HttpClient" /> kullanarak biçimlendirilmiş isteklerin yapılmasına yardımcı olan genişletme yöntemlerini sağlar. </summary>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsJsonAsync``1(System.Net.Http.HttpClient,System.String,``0)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsJsonAsync``1(System.Net.Http.HttpClient,System.String,``0,System.Threading.CancellationToken)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsJsonAsync``1(System.Net.Http.HttpClient,System.Uri,``0)">
+      <summary> JSON olarak serileştirilen belirli bir değer ile, belirtilen URI'ye zaman uyumsuz bir işlem olarak bir POST isteği gönderir. </summary>
+      <returns>Zaman uyumsuz işlemi temsil eden bir görev nesnesi.</returns>
+      <param name="client">İsteği yapmak için kullanılan istemci.</param>
+      <param name="requestUri">İsteğin gönderildiği URI.</param>
+      <param name="value">İsteğin varlık gövdesine yerleştirilecek değer.</param>
+      <typeparam name="T">Değerinin türü.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsJsonAsync``1(System.Net.Http.HttpClient,System.Uri,``0,System.Threading.CancellationToken)">
+      <summary> JSON olarak serileştirilen belirli bir değer ile, belirtilen URI'ye zaman uyumsuz bir işlem olarak bir POST isteği gönderir. </summary>
+      <returns>Zaman uyumsuz işlemi temsil eden bir görev nesnesi.</returns>
+      <param name="client">İsteği yapmak için kullanılan istemci.</param>
+      <param name="requestUri">İsteğin gönderildiği URI.</param>
+      <param name="value">İsteğin varlık gövdesine yerleştirilecek değer.</param>
+      <param name="cancellationToken">İptal bildirimi almak için diğer nesneler veya  iş parçacıkları tarafından kullanılabilen bir iptal belirteci.</param>
+      <typeparam name="T">Değerinin türü.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsXmlAsync``1(System.Net.Http.HttpClient,System.String,``0)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsXmlAsync``1(System.Net.Http.HttpClient,System.String,``0,System.Threading.CancellationToken)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsXmlAsync``1(System.Net.Http.HttpClient,System.Uri,``0)">
+      <summary> XML olarak serisi kaldırılan belirli bir değer ile, belirtilen URI'ye zaman uyumsuz bir işlem olarak bir POST isteği gönderir. </summary>
+      <returns>Zaman uyumsuz işlemi temsil eden bir görev nesnesi.</returns>
+      <param name="client">İsteği yapmak için kullanılan istemci.</param>
+      <param name="requestUri">İsteğin gönderildiği URI.</param>
+      <param name="value">İsteğin varlık gövdesine yerleştirilecek değer.</param>
+      <typeparam name="T">Değerinin türü.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsXmlAsync``1(System.Net.Http.HttpClient,System.Uri,``0,System.Threading.CancellationToken)">
+      <summary> XML olarak serisi kaldırılan belirli bir değer ile, belirtilen URI'ye zaman uyumsuz bir işlem olarak bir POST isteği gönderir. </summary>
+      <returns>Zaman uyumsuz işlemi temsil eden bir görev nesnesi.</returns>
+      <param name="client">İsteği yapmak için kullanılan istemci.</param>
+      <param name="requestUri">İsteğin gönderildiği URI.</param>
+      <param name="value">İsteğin varlık gövdesine yerleştirilecek değer.</param>
+      <param name="cancellationToken">İptal bildirimi almak için diğer nesneler veya  iş parçacıkları tarafından kullanılabilen bir iptal belirteci.</param>
+      <typeparam name="T">Değerinin türü.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsync``1(System.Net.Http.HttpClient,System.String,``0,System.Net.Http.Formatting.MediaTypeFormatter)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsync``1(System.Net.Http.HttpClient,System.String,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,System.Threading.CancellationToken)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsync``1(System.Net.Http.HttpClient,System.String,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.String)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsync``1(System.Net.Http.HttpClient,System.String,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.String,System.Threading.CancellationToken)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsync``1(System.Net.Http.HttpClient,System.String,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.Threading.CancellationToken)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsync``1(System.Net.Http.HttpClient,System.Uri,``0,System.Net.Http.Formatting.MediaTypeFormatter)">
+      <summary> Belirli bir biçimlendirici kullanılarak serileştirilen değer ile, belirtilen URI'ye zaman uyumsuz bir işlem olarak bir POST isteği gönderir. </summary>
+      <returns>Zaman uyumsuz işlemi temsil eden bir görev nesnesi.</returns>
+      <param name="client">İsteği yapmak için kullanılan istemci.</param>
+      <param name="requestUri">İsteğin gönderildiği URI.</param>
+      <param name="value">İsteğin varlık gövdesine yerleştirilecek değer.</param>
+      <param name="formatter">Değeri serileştirmek için kullanılan biçimlendirici.</param>
+      <typeparam name="T">Değerinin türü.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsync``1(System.Net.Http.HttpClient,System.Uri,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,System.Threading.CancellationToken)">
+      <summary> Belirli bir biçimlendirici kullanılarak serileştirilen değer ile, belirtilen URI'ye zaman uyumsuz bir işlem olarak bir POST isteği gönderir. </summary>
+      <returns>Zaman uyumsuz işlemi temsil eden bir görev nesnesi.</returns>
+      <param name="client">İsteği yapmak için kullanılan istemci.</param>
+      <param name="requestUri">İsteğin gönderildiği URI.</param>
+      <param name="value">İsteğin varlık gövdesine yerleştirilecek değer.</param>
+      <param name="formatter">Değeri serileştirmek için kullanılan biçimlendirici.</param>
+      <param name="mediaType">İsteğin içeriğinin Content-Type üstbilgisinin yetkili değeri. Boş olabilir ve bu durumda <paramref name="formatter" /> varsayılan içerik türü kullanılır.</param>
+      <param name="cancellationToken">İptal bildirimi almak için diğer nesneler veya  iş parçacıkları tarafından kullanılabilen bir iptal belirteci.</param>
+      <typeparam name="T">Değerinin türü.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsync``1(System.Net.Http.HttpClient,System.Uri,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.String)">
+      <summary> Belirli bir biçimlendirici kullanılarak serileştirilen değer ile, belirtilen URI'ye zaman uyumsuz bir işlem olarak bir POST isteği gönderir. </summary>
+      <returns>Zaman uyumsuz işlemi temsil eden bir görev nesnesi.</returns>
+      <param name="client">İsteği yapmak için kullanılan istemci.</param>
+      <param name="requestUri">İsteğin gönderildiği URI.</param>
+      <param name="value">İsteğin varlık gövdesine yerleştirilecek değer.</param>
+      <param name="formatter">Değeri serileştirmek için kullanılan biçimlendirici.</param>
+      <param name="mediaType">İsteğin içeriğinin Content-Type üstbilgisinin yetkili değeri. Boş olabilir ve bu durumda <paramref name="formatter" /> varsayılan içerik türü kullanılır.</param>
+      <typeparam name="T">Değerinin türü.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsync``1(System.Net.Http.HttpClient,System.Uri,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.String,System.Threading.CancellationToken)">
+      <summary> Belirli bir biçimlendirici kullanılarak serileştirilen değer ile, belirtilen URI'ye zaman uyumsuz bir işlem olarak bir POST isteği gönderir. </summary>
+      <returns>Zaman uyumsuz işlemi temsil eden bir görev nesnesi.</returns>
+      <param name="client">İsteği yapmak için kullanılan istemci.</param>
+      <param name="requestUri">İsteğin gönderildiği URI.</param>
+      <param name="value">İsteğin varlık gövdesine yerleştirilecek değer.</param>
+      <param name="formatter">Değeri serileştirmek için kullanılan biçimlendirici.</param>
+      <param name="mediaType">İsteğin içeriğinin Content-Type üstbilgisinin yetkili değeri. Boş olabilir ve bu durumda <paramref name="formatter" /> varsayılan içerik türü kullanılır.</param>
+      <param name="cancellationToken">İptal bildirimi almak için diğer nesneler veya  iş parçacıkları tarafından kullanılabilen bir iptal belirteci.</param>
+      <typeparam name="T">Değerinin türü.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsync``1(System.Net.Http.HttpClient,System.Uri,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.Threading.CancellationToken)">
+      <summary> Belirli bir biçimlendirici kullanılarak serileştirilen değer ile, belirtilen URI'ye zaman uyumsuz bir işlem olarak bir POST isteği gönderir. </summary>
+      <returns>Zaman uyumsuz işlemi temsil eden bir görev nesnesi.</returns>
+      <param name="client">İsteği yapmak için kullanılan istemci.</param>
+      <param name="requestUri">İsteğin gönderildiği URI.</param>
+      <param name="value">İsteğin varlık gövdesine yerleştirilecek değer.</param>
+      <param name="formatter">Değeri serileştirmek için kullanılan biçimlendirici.</param>
+      <param name="cancellationToken">İptal bildirimi almak için diğer nesneler veya  iş parçacıkları tarafından kullanılabilen bir iptal belirteci.</param>
+      <typeparam name="T">Değerinin türü.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsJsonAsync``1(System.Net.Http.HttpClient,System.String,``0)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsJsonAsync``1(System.Net.Http.HttpClient,System.String,``0,System.Threading.CancellationToken)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsJsonAsync``1(System.Net.Http.HttpClient,System.Uri,``0)">
+      <summary> JSON olarak serileştirilen belirli bir değer ile, belirtilen URI'ye zaman uyumsuz bir işlem olarak bir PUT isteği gönderir. </summary>
+      <returns>Zaman uyumsuz işlemi temsil eden bir görev nesnesi.</returns>
+      <param name="client">İsteği yapmak için kullanılan istemci.</param>
+      <param name="requestUri">İsteğin gönderildiği URI.</param>
+      <param name="value">İsteğin varlık gövdesine yerleştirilecek değer.</param>
+      <typeparam name="T">Değerinin türü.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsJsonAsync``1(System.Net.Http.HttpClient,System.Uri,``0,System.Threading.CancellationToken)">
+      <summary> JSON olarak serileştirilen belirli bir değer ile, belirtilen URI'ye zaman uyumsuz bir işlem olarak bir PUT isteği gönderir. </summary>
+      <returns>Zaman uyumsuz işlemi temsil eden bir görev nesnesi.</returns>
+      <param name="client">İsteği yapmak için kullanılan istemci.</param>
+      <param name="requestUri">İsteğin gönderildiği URI.</param>
+      <param name="value">İsteğin varlık gövdesine yerleştirilecek değer.</param>
+      <param name="cancellationToken">İptal bildirimi almak için diğer nesneler veya  iş parçacıkları tarafından kullanılabilen bir iptal belirteci.</param>
+      <typeparam name="T">Değerinin türü.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsXmlAsync``1(System.Net.Http.HttpClient,System.String,``0)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsXmlAsync``1(System.Net.Http.HttpClient,System.String,``0,System.Threading.CancellationToken)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsXmlAsync``1(System.Net.Http.HttpClient,System.Uri,``0)">
+      <summary> XML olarak serileştirilen belirli bir değer ile, belirtilen URI'ye zaman uyumsuz bir işlem olarak bir PUT isteği gönderir. </summary>
+      <returns>Zaman uyumsuz işlemi temsil eden bir görev nesnesi.</returns>
+      <param name="client">İsteği yapmak için kullanılan istemci.</param>
+      <param name="requestUri">İsteğin gönderildiği URI.</param>
+      <param name="value">İsteğin varlık gövdesine yerleştirilecek değer.</param>
+      <typeparam name="T">Değerinin türü.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsXmlAsync``1(System.Net.Http.HttpClient,System.Uri,``0,System.Threading.CancellationToken)">
+      <summary> XML olarak serileştirilen belirli bir değer ile, belirtilen URI'ye zaman uyumsuz bir işlem olarak bir PUT isteği gönderir. </summary>
+      <returns>Zaman uyumsuz işlemi temsil eden bir görev nesnesi.</returns>
+      <param name="client">İsteği yapmak için kullanılan istemci.</param>
+      <param name="requestUri">İsteğin gönderildiği URI.</param>
+      <param name="value">İsteğin varlık gövdesine yerleştirilecek değer.</param>
+      <param name="cancellationToken">İptal bildirimi almak için diğer nesneler veya  iş parçacıkları tarafından kullanılabilen bir iptal belirteci.</param>
+      <typeparam name="T">Değerinin türü.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsync``1(System.Net.Http.HttpClient,System.String,``0,System.Net.Http.Formatting.MediaTypeFormatter)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsync``1(System.Net.Http.HttpClient,System.String,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,System.Threading.CancellationToken)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsync``1(System.Net.Http.HttpClient,System.String,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.String)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsync``1(System.Net.Http.HttpClient,System.String,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.String,System.Threading.CancellationToken)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsync``1(System.Net.Http.HttpClient,System.String,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.Threading.CancellationToken)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsync``1(System.Net.Http.HttpClient,System.Uri,``0,System.Net.Http.Formatting.MediaTypeFormatter)">
+      <summary> Belirli bir biçimlendirici kullanılarak serileştirilen değer ile, belirtilen URI'ye zaman uyumsuz bir işlem olarak bir PUT isteği gönderir. </summary>
+      <returns>Zaman uyumsuz işlemi temsil eden bir görev nesnesi.</returns>
+      <param name="client">İsteği yapmak için kullanılan istemci.</param>
+      <param name="requestUri">İsteğin gönderildiği URI.</param>
+      <param name="value">İsteğin varlık gövdesine yerleştirilecek değer.</param>
+      <param name="formatter">Değeri serileştirmek için kullanılan biçimlendirici.</param>
+      <typeparam name="T">Değerinin türü.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsync``1(System.Net.Http.HttpClient,System.Uri,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,System.Threading.CancellationToken)">
+      <summary> Belirli bir biçimlendirici kullanılarak serileştirilen değer ile, belirtilen URI'ye zaman uyumsuz bir işlem olarak bir PUT isteği gönderir. </summary>
+      <returns>Zaman uyumsuz işlemi temsil eden bir görev nesnesi.</returns>
+      <param name="client">İsteği yapmak için kullanılan istemci.</param>
+      <param name="requestUri">İsteğin gönderildiği URI.</param>
+      <param name="value">İsteğin varlık gövdesine yerleştirilecek değer.</param>
+      <param name="formatter">Değeri serileştirmek için kullanılan biçimlendirici.</param>
+      <param name="mediaType">İsteğin içeriğinin Content-Type üstbilgisinin yetkili değeri. Boş olabilir ve bu durumda <paramref name="formatter" /> varsayılan içerik türü kullanılır.</param>
+      <param name="cancellationToken">İptal bildirimi almak için diğer nesneler veya  iş parçacıkları tarafından kullanılabilen bir iptal belirteci.</param>
+      <typeparam name="T">Değerinin türü.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsync``1(System.Net.Http.HttpClient,System.Uri,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.String)">
+      <summary> Belirli bir biçimlendirici kullanılarak serileştirilen değer ile, belirtilen URI'ye zaman uyumsuz bir işlem olarak bir PUT isteği gönderir. </summary>
+      <returns>Zaman uyumsuz işlemi temsil eden bir görev nesnesi.</returns>
+      <param name="client">İsteği yapmak için kullanılan istemci.</param>
+      <param name="requestUri">İsteğin gönderildiği URI.</param>
+      <param name="value">İsteğin varlık gövdesine yerleştirilecek değer.</param>
+      <param name="formatter">Değeri serileştirmek için kullanılan biçimlendirici.</param>
+      <param name="mediaType">İsteğin içeriğinin Content-Type üstbilgisinin yetkili değeri. Boş olabilir ve bu durumda <paramref name="formatter" /> varsayılan içerik türü kullanılır.</param>
+      <typeparam name="T">Değerinin türü.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsync``1(System.Net.Http.HttpClient,System.Uri,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.String,System.Threading.CancellationToken)">
+      <summary> Belirli bir biçimlendirici kullanılarak serileştirilen değer ile, belirtilen URI'ye zaman uyumsuz bir işlem olarak bir PUT isteği gönderir. </summary>
+      <returns>Zaman uyumsuz işlemi temsil eden bir görev nesnesi.</returns>
+      <param name="client">İsteği yapmak için kullanılan istemci.</param>
+      <param name="requestUri">İsteğin gönderildiği URI.</param>
+      <param name="value">İsteğin varlık gövdesine yerleştirilecek değer.</param>
+      <param name="formatter">Değeri serileştirmek için kullanılan biçimlendirici.</param>
+      <param name="mediaType">İsteğin içeriğinin Content-Type üstbilgisinin yetkili değeri. Boş olabilir ve bu durumda <paramref name="formatter" /> varsayılan içerik türü kullanılır.</param>
+      <param name="cancellationToken">İptal bildirimi almak için diğer nesneler veya  iş parçacıkları tarafından kullanılabilen bir iptal belirteci.</param>
+      <typeparam name="T">Değerinin türü.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsync``1(System.Net.Http.HttpClient,System.Uri,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.Threading.CancellationToken)">
+      <summary> Belirli bir biçimlendirici kullanılarak serileştirilen değer ile, belirtilen URI'ye zaman uyumsuz bir işlem olarak bir PUT isteği gönderir. </summary>
+      <returns>Zaman uyumsuz işlemi temsil eden bir görev nesnesi.</returns>
+      <param name="client">İsteği yapmak için kullanılan istemci.</param>
+      <param name="requestUri">İsteğin gönderildiği URI.</param>
+      <param name="value">İsteğin varlık gövdesine yerleştirilecek değer.</param>
+      <param name="formatter">Değeri serileştirmek için kullanılan biçimlendirici.</param>
+      <param name="cancellationToken">İptal bildirimi almak için diğer nesneler veya  iş parçacıkları tarafından kullanılabilen bir iptal belirteci.</param>
+      <typeparam name="T">Değerinin türü.</typeparam>
+    </member>
+    <member name="T:System.Net.Http.HttpClientFactory">
+      <summary>
+        <see cref="T:System.Net.Http.HttpClient" /> öğesinin yeni örneğini oluşturma üretecini temsil eder.</summary>
+    </member>
+    <member name="M:System.Net.Http.HttpClientFactory.Create(System.Net.Http.DelegatingHandler[])">
+      <summary>
+        <see cref="T:System.Net.Http.HttpClient" /> öğesinin yeni bir örneğini oluşturur.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.HttpClient" /> öğesinin yeni bir örneği.</returns>
+      <param name="handlers">Başka bir işleyiciye HTTP yanıt iletilerinin işlenmesini temsil eden HTTP işleyicisi listesi.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpClientFactory.Create(System.Net.Http.HttpMessageHandler,System.Net.Http.DelegatingHandler[])">
+      <summary>
+        <see cref="T:System.Net.Http.HttpClient" /> öğesinin yeni bir örneğini oluşturur.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.HttpClient" /> öğesinin yeni bir örneği.</returns>
+      <param name="innerHandler">HTTP yanıt iletilerini işlemeden sorumlu iç işleyici.</param>
+      <param name="handlers">Başka bir işleyiciye HTTP yanıt iletilerinin işlenmesini temsil eden HTTP işleyicisi listesi.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpClientFactory.CreatePipeline(System.Net.Http.HttpMessageHandler,System.Collections.Generic.IEnumerable{System.Net.Http.DelegatingHandler})">
+      <summary>Ardışık düzen haline getirilmesi gereken <see cref="T:System.Net.Http.HttpClient" /> öğesinin yeni bir örneği.</summary>
+      <returns>Ardışık düzen haline getirilmesi gereken <see cref="T:System.Net.Http.HttpClient" /> öğesinin yeni bir örneği.</returns>
+      <param name="innerHandler">HTTP yanıt iletilerini işlemeden sorumlu iç işleyici.</param>
+      <param name="handlers">Başka bir işleyiciye HTTP yanıt iletilerinin işlenmesini temsil eden HTTP işleyicisi listesi.</param>
+    </member>
+    <member name="T:System.Net.Http.HttpContentExtensions">
+      <summary>Güçlü şekilde yazılan nesnelerin HttpContent örneklerinden okunmasına olanak tanımak için genişletme yöntemlerini belirtir.</summary>
+    </member>
+    <member name="M:System.Net.Http.HttpContentExtensions.ReadAsAsync``1(System.Net.Http.HttpContent)">
+      <summary>content örneğinden belirtilen &lt;typeparamref name="T" /&gt; türünün nesnesini verecek olan bir Görev döndürür. </summary>
+      <returns>Belirtilen türde bir nesne örneği.</returns>
+      <param name="content">Okunacak HttpContent örneği.</param>
+      <typeparam name="T">Okunacak nesnenin türü.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpContentExtensions.ReadAsAsync``1(System.Net.Http.HttpContent,System.Collections.Generic.IEnumerable{System.Net.Http.Formatting.MediaTypeFormatter})">
+      <summary>content örneğinden belirtilen &lt;typeparamref name="T" /&gt; türünün nesnesini verecek olan bir Görev döndürür. </summary>
+      <returns>Belirtilen türde bir nesne örneği.</returns>
+      <param name="content">Okunacak HttpContent örneği.</param>
+      <param name="formatters">Kullanılacak MediaTyepFormatter örnekleri topluluğu.</param>
+      <typeparam name="T">Okunacak nesnenin türü.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpContentExtensions.ReadAsAsync``1(System.Net.Http.HttpContent,System.Collections.Generic.IEnumerable{System.Net.Http.Formatting.MediaTypeFormatter},System.Net.Http.Formatting.IFormatterLogger)">
+      <summary>content örneğinden belirtilen &lt;typeparamref name="T" /&gt; türünün nesnesini verecek olan bir Görev döndürür. </summary>
+      <returns>Belirtilen türde bir nesne örneği.</returns>
+      <param name="content">Okunacak HttpContent örneği.</param>
+      <param name="formatters">Kullanılacak MediaTypeFormatter örnekleri topluluğu.</param>
+      <param name="formatterLogger">Olayların kaydedileceği IFormatterLogger.</param>
+      <typeparam name="T">Okunacak nesnenin türü.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpContentExtensions.ReadAsAsync``1(System.Net.Http.HttpContent,System.Collections.Generic.IEnumerable{System.Net.Http.Formatting.MediaTypeFormatter},System.Net.Http.Formatting.IFormatterLogger,System.Threading.CancellationToken)">
+      <summary>content örneğinden belirtilen type türünün nesnesini verecek olan bir Görev döndürür.</summary>
+      <returns>Belirtilen türde bir nesne örneği.</returns>
+      <param name="content">Okunacak HttpContent örneği.</param>
+      <param name="formatters">Kullanılacak MediaTypeFormatter örnekleri topluluğu.</param>
+      <param name="formatterLogger">Olayların kaydedileceği IFormatterLogger.</param>
+      <param name="cancellationToken">İşlemi iptal eden belirteç.</param>
+      <typeparam name="T">Okunacak nesnenin türü.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpContentExtensions.ReadAsAsync``1(System.Net.Http.HttpContent,System.Collections.Generic.IEnumerable{System.Net.Http.Formatting.MediaTypeFormatter},System.Threading.CancellationToken)">
+      <summary>content örneğinden belirtilen type türünün nesnesini verecek olan bir Görev döndürür.</summary>
+      <returns>Belirtilen türde bir nesne örneği.</returns>
+      <param name="content">Okunacak HttpContent örneği.</param>
+      <param name="formatters">Kullanılacak MediaTypeFormatter örnekleri topluluğu.</param>
+      <param name="cancellationToken">İşlemi iptal eden belirteç.</param>
+      <typeparam name="T">Okunacak nesnenin türü.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpContentExtensions.ReadAsAsync``1(System.Net.Http.HttpContent,System.Threading.CancellationToken)">
+      <summary>content örneğinden belirtilen type türünün nesnesini verecek olan bir Görev döndürür.</summary>
+      <returns>Belirtilen türde bir nesne örneği.</returns>
+      <param name="content">Okunacak HttpContent örneği.</param>
+      <param name="cancellationToken">İşlemi iptal eden belirteç.</param>
+      <typeparam name="T">Okunacak nesnenin türü.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpContentExtensions.ReadAsAsync(System.Net.Http.HttpContent,System.Type)">
+      <summary>content örneğinden belirtilen type türünün nesnesini verecek olan bir Görev döndürür. </summary>
+      <returns>Belirtilen türün bir nesne örneğini verecek Görev.</returns>
+      <param name="content">Okunacak HttpContent örneği.</param>
+      <param name="type">Okunacak nesnenin türü.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentExtensions.ReadAsAsync(System.Net.Http.HttpContent,System.Type,System.Collections.Generic.IEnumerable{System.Net.Http.Formatting.MediaTypeFormatter})">
+      <summary> İçeriğin serisini kaldırmak için sağlanan biçimlendiricilerden birini kullanarak, içerik örneğinden belirtilen türün nesnesini verecek olan bir Görev döndürür. </summary>
+      <returns>Belirtilen türde bir nesne örneği.</returns>
+      <param name="content">Okunacak HttpContent örneği.</param>
+      <param name="type">Okunacak nesnenin türü.</param>
+      <param name="formatters">Kullanılacak MediaTypeFormatter örnekleri topluluğu.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentExtensions.ReadAsAsync(System.Net.Http.HttpContent,System.Type,System.Collections.Generic.IEnumerable{System.Net.Http.Formatting.MediaTypeFormatter},System.Net.Http.Formatting.IFormatterLogger)">
+      <summary> İçeriğin serisini kaldırmak için sağlanan biçimlendiricilerden birini kullanarak, içerik örneğinden belirtilen türün nesnesini verecek olan bir Görev döndürür. </summary>
+      <returns>Belirtilen türde bir nesne örneği.</returns>
+      <param name="content">Okunacak HttpContent örneği.</param>
+      <param name="type">Okunacak nesnenin türü.</param>
+      <param name="formatters">Kullanılacak MediaTypeFormatter örnekleri topluluğu.</param>
+      <param name="formatterLogger">Olayların kaydedileceği IFormatterLogger.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentExtensions.ReadAsAsync(System.Net.Http.HttpContent,System.Type,System.Collections.Generic.IEnumerable{System.Net.Http.Formatting.MediaTypeFormatter},System.Net.Http.Formatting.IFormatterLogger,System.Threading.CancellationToken)">
+      <summary>İçeriğin serisini kaldırmak için sağlanan biçimlendiricilerden birini kullanarak, içerik örneğinden belirtilen türün nesnesini verecek olan bir Görev döndürür.</summary>
+      <returns>Belirtilen türde bir nesne örneği.</returns>
+      <param name="content">Okunacak HttpContent örneği.</param>
+      <param name="type">Okunacak nesnenin türü.</param>
+      <param name="formatters">Kullanılacak MediaTypeFormatter örnekleri topluluğu.</param>
+      <param name="formatterLogger">Olayların kaydedileceği IFormatterLogger.</param>
+      <param name="cancellationToken">İşlemi iptal eden belirteç.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentExtensions.ReadAsAsync(System.Net.Http.HttpContent,System.Type,System.Collections.Generic.IEnumerable{System.Net.Http.Formatting.MediaTypeFormatter},System.Threading.CancellationToken)">
+      <summary>İçeriğin serisini kaldırmak için sağlanan biçimlendiricilerden birini kullanarak, içerik örneğinden belirtilen türün nesnesini verecek olan bir Görev döndürür.</summary>
+      <returns>Belirtilen türde bir nesne örneği.</returns>
+      <param name="content">Okunacak HttpContent örneği.</param>
+      <param name="type">Okunacak nesnenin türü.</param>
+      <param name="formatters">Kullanılacak MediaTypeFormatter örnekleri topluluğu.</param>
+      <param name="cancellationToken">İşlemi iptal eden belirteç.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentExtensions.ReadAsAsync(System.Net.Http.HttpContent,System.Type,System.Threading.CancellationToken)">
+      <summary>İçeriğin serisini kaldırmak için sağlanan biçimlendiricilerden birini kullanarak, içerik örneğinden belirtilen türün nesnesini verecek olan bir Görev döndürür.</summary>
+      <returns>Belirtilen türde bir nesne örneği.</returns>
+      <param name="content">Okunacak HttpContent örneği.</param>
+      <param name="type">Okunacak nesnenin türü.</param>
+      <param name="cancellationToken">İşlemi iptal eden belirteç.</param>
+    </member>
+    <member name="T:System.Net.Http.HttpContentFormDataExtensions">
+      <summary>
+        <see cref="T:System.Net.Http.HttpContent" /> örneklerinden HTML formundaki URL kodlanmış verileri okumak için genişletme yöntemleri.</summary>
+    </member>
+    <member name="M:System.Net.Http.HttpContentFormDataExtensions.IsFormData(System.Net.Http.HttpContent)">
+      <summary>Belirtilen içeriğin HTML formundaki URL kodlanmış veriler olup olmadığını belirler.</summary>
+      <returns>Belirtilen içerik HTML formundaki URL kodlanmış verileri ise true; değilse, false.</returns>
+      <param name="content">İçerik.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentFormDataExtensions.ReadAsFormDataAsync(System.Net.Http.HttpContent)">
+      <summary>
+        <see cref="T:System.Net.Http.HttpContent" /> örneğinden HTML formundaki URL kodlanmış verilerini zaman uyumsuz olarak okur ve sonuçları bir <see cref="T:System.Collections.Specialized.NameValueCollection" /> nesnesinde saklar.</summary>
+      <returns>Zaman uyumsuz işlemi temsil eden bir görev nesnesi.</returns>
+      <param name="content">İçerik.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentFormDataExtensions.ReadAsFormDataAsync(System.Net.Http.HttpContent,System.Threading.CancellationToken)">
+      <summary>
+        <see cref="T:System.Net.Http.HttpContent" /> örneğinden HTML formundaki URL kodlanmış verilerini zaman uyumsuz olarak okur ve sonuçları bir <see cref="T:System.Collections.Specialized.NameValueCollection" /> nesnesinde saklar.</summary>
+      <returns>Zaman uyumsuz işlemi temsil eden bir görev nesnesi.</returns>
+      <param name="content">İçerik.</param>
+      <param name="cancellationToken">İşlemi iptal eden belirteç.</param>
+    </member>
+    <member name="T:System.Net.Http.HttpContentMessageExtensions">
+      <summary>
+        <see cref="T:System.Net.Http.HttpRequestMessage" /> ve <see cref="T:System.Net.Http.HttpResponseMessage" /> varlıklarını <see cref="T:System.Net.Http.HttpContent" /> örneklerinden okumak için genişletme yöntemleri sağlar. </summary>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.IsHttpRequestMessageContent(System.Net.Http.HttpContent)">
+      <summary>Belirtilen içeriğin HTTP istek iletisi içeriği olup olmadığını belirler.</summary>
+      <returns>Belirtilen içerik HTTP iletisi içeriği ise true, değilse false.</returns>
+      <param name="content">Kontrol edilecek içerik.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.IsHttpResponseMessageContent(System.Net.Http.HttpContent)">
+      <summary>Belirtilen içeriğin HTTP yanıt iletisi içeriği olup olmadığını belirler.</summary>
+      <returns>Belirtilen içerik HTTP iletisi içeriği ise true, değilse false.</returns>
+      <param name="content">Kontrol edilecek içerik.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.ReadAsHttpRequestMessageAsync(System.Net.Http.HttpContent)">
+      <summary>
+        <see cref="T:System.Net.Http.HttpContent" /> öğesini bir <see cref="T:System.Net.Http.HttpRequestMessage" /> öğesi olarak okur. </summary>
+      <returns>Ayrıştırılmış <see cref="T:System.Net.Http.HttpRequestMessage" /> örneği.</returns>
+      <param name="content">Okunacak içerik.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.ReadAsHttpRequestMessageAsync(System.Net.Http.HttpContent,System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.HttpContent" /> öğesini bir <see cref="T:System.Net.Http.HttpRequestMessage" /> öğesi olarak okur. </summary>
+      <returns>Ayrıştırılmış <see cref="T:System.Net.Http.HttpRequestMessage" /> örneği.</returns>
+      <param name="content">Okunacak içerik.</param>
+      <param name="uriScheme">İstek URI'si için kullanılacak URI düzeni.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.ReadAsHttpRequestMessageAsync(System.Net.Http.HttpContent,System.String,System.Int32)">
+      <summary>
+        <see cref="T:System.Net.Http.HttpContent" /> öğesini bir <see cref="T:System.Net.Http.HttpRequestMessage" /> öğesi olarak okur. </summary>
+      <returns>Ayrıştırılmış <see cref="T:System.Net.Http.HttpRequestMessage" /> örneği.</returns>
+      <param name="content">Okunacak içerik.</param>
+      <param name="uriScheme">İstek URI'si için kullanılacak URI düzeni.</param>
+      <param name="bufferSize">Arabellek boyutu.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.ReadAsHttpRequestMessageAsync(System.Net.Http.HttpContent,System.String,System.Int32,System.Int32)">
+      <summary>
+        <see cref="T:System.Net.Http.HttpContent" /> öğesini bir <see cref="T:System.Net.Http.HttpRequestMessage" /> öğesi olarak okur.</summary>
+      <returns>Ayrıştırılmış <see cref="T:System.Net.Http.HttpRequestMessage" /> örneği.</returns>
+      <param name="content">Okunacak içerik.</param>
+      <param name="uriScheme">İstek URI'si için kullanılacak URI düzeni.</param>
+      <param name="bufferSize">Arabellek boyutu.</param>
+      <param name="maxHeaderSize">HTTP üstbilgisinin maksimum uzunluğu.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.ReadAsHttpRequestMessageAsync(System.Net.Http.HttpContent,System.String,System.Int32,System.Int32,System.Threading.CancellationToken)"></member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.ReadAsHttpRequestMessageAsync(System.Net.Http.HttpContent,System.String,System.Int32,System.Threading.CancellationToken)"></member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.ReadAsHttpRequestMessageAsync(System.Net.Http.HttpContent,System.String,System.Threading.CancellationToken)"></member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.ReadAsHttpRequestMessageAsync(System.Net.Http.HttpContent,System.Threading.CancellationToken)"></member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.ReadAsHttpResponseMessageAsync(System.Net.Http.HttpContent)">
+      <summary>
+        <see cref="T:System.Net.Http.HttpContent" /> öğesini bir <see cref="T:System.Net.Http.HttpResponseMessage" /> öğesi olarak okur. </summary>
+      <returns>Ayrıştırılmış <see cref="T:System.Net.Http.HttpResponseMessage" /> örneği.</returns>
+      <param name="content">Okunacak içerik.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.ReadAsHttpResponseMessageAsync(System.Net.Http.HttpContent,System.Int32)">
+      <summary>
+        <see cref="T:System.Net.Http.HttpContent" /> öğesini bir <see cref="T:System.Net.Http.HttpResponseMessage" /> öğesi olarak okur. </summary>
+      <returns>Ayrıştırılmış <see cref="T:System.Net.Http.HttpResponseMessage" /> örneği.</returns>
+      <param name="content">Okunacak içerik.</param>
+      <param name="bufferSize">Arabellek boyutu.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.ReadAsHttpResponseMessageAsync(System.Net.Http.HttpContent,System.Int32,System.Int32)">
+      <summary>
+        <see cref="T:System.Net.Http.HttpContent" /> öğesini bir <see cref="T:System.Net.Http.HttpResponseMessage" /> öğesi olarak okur.</summary>
+      <returns>Ayrıştırılmış <see cref="T:System.Net.Http.HttpResponseMessage" /> örneği.</returns>
+      <param name="content">Okunacak içerik.</param>
+      <param name="bufferSize">Arabellek boyutu.</param>
+      <param name="maxHeaderSize">HTTP üstbilgisinin maksimum uzunluğu.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.ReadAsHttpResponseMessageAsync(System.Net.Http.HttpContent,System.Int32,System.Int32,System.Threading.CancellationToken)"></member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.ReadAsHttpResponseMessageAsync(System.Net.Http.HttpContent,System.Int32,System.Threading.CancellationToken)"></member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.ReadAsHttpResponseMessageAsync(System.Net.Http.HttpContent,System.Threading.CancellationToken)"></member>
+    <member name="T:System.Net.Http.HttpContentMultipartExtensions">
+      <summary>
+        <see cref="T:System.Net.Http.HttpContent" /> örneklerinden MIME çok bölümlü varlıkları okumak için genişletme yöntemleri.</summary>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMultipartExtensions.IsMimeMultipartContent(System.Net.Http.HttpContent)">
+      <summary>Belirtilen içeriğin MIME çok bölümlü içerik olup olmadığını belirler.</summary>
+      <returns>Belirtilen içerik MIME çok bölümlü içerik ise true, değilse false.</returns>
+      <param name="content">İçerik.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMultipartExtensions.IsMimeMultipartContent(System.Net.Http.HttpContent,System.String)">
+      <summary>Belirtilen içeriğin belirtilen alt türe sahip MIME çok bölümlü içerik olup olmadığını belirler.</summary>
+      <returns>Belirtilen içerik, belirtilen alt türe sahip MIME çok bölümlü içerik ise true, değilse false.</returns>
+      <param name="content">İçerik.</param>
+      <param name="subtype">Eşleşecek MIME çok bölümlü alt türü.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMultipartExtensions.ReadAsMultipartAsync(System.Net.Http.HttpContent)">
+      <summary>Bir MIME çok bölümlü iletisi içindeki tüm gövde bölümlerini okur ve sonuç olarak bir <see cref="T:System.Net.Http.HttpContent" /> örnekleri kümesi üretir.</summary>
+      <returns>Her bir örneğin bir gövde bölümünü temsil ettiği <see cref="T:System.Net.Http.HttpContent" /> örnekleri topluluğunu alma görevini temsil eden bir <see cref="T:System.Threading.Tasks.Task`1" /> öğesi.</returns>
+      <param name="content">Nesnenin içeriği için kullanılmak üzere var olan bir <see cref="T:System.Net.Http.HttpContent" /> örneği.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMultipartExtensions.ReadAsMultipartAsync(System.Net.Http.HttpContent,System.Threading.CancellationToken)">
+      <summary>Bir MIME çok bölümlü iletisi içindeki tüm gövde bölümlerini okur ve sonuç olarak bir <see cref="T:System.Net.Http.HttpContent" /> örnekleri kümesi üretir.</summary>
+      <returns>Her bir örneğin bir gövde bölümünü temsil ettiği <see cref="T:System.Net.Http.HttpContent" /> örnekleri topluluğunu alma görevini temsil eden bir <see cref="T:System.Threading.Tasks.Task`1" /> öğesi.</returns>
+      <param name="content">Nesnenin içeriği için kullanılmak üzere var olan bir <see cref="T:System.Net.Http.HttpContent" /> örneği.</param>
+      <param name="cancellationToken">İşlemi iptal eden belirteç.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMultipartExtensions.ReadAsMultipartAsync``1(System.Net.Http.HttpContent,``0)">
+      <summary>Bir MIME çok bölümlü iletisi içindeki tüm gövde bölümlerini okur ve her gövde parçasının içeriğinin nerede yazıldığını belirlemek için streamProvider örneğini kullanarak, sonuçta bir <see cref="T:System.Net.Http.HttpContent" /> örnekleri kümesi üretir.</summary>
+      <returns>Her bir örneğin bir gövde bölümünü temsil ettiği <see cref="T:System.Net.Http.HttpContent" /> örnekleri topluluğunu alma görevini temsil eden bir <see cref="T:System.Threading.Tasks.Task`1" /> öğesi.</returns>
+      <param name="content">Nesnenin içeriği için kullanılmak üzere var olan bir <see cref="T:System.Net.Http.HttpContent" /> örneği.</param>
+      <param name="streamProvider">Gövde parçalarının ayrıştırıldıkları gibi yazılacakları yer için çıkış akışları sağlayan bir akış sağlayıcı.</param>
+      <typeparam name="T">MIME çok bölümlü türü.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMultipartExtensions.ReadAsMultipartAsync``1(System.Net.Http.HttpContent,``0,System.Int32)">
+      <summary>Bir MIME çok bölümlü iletisi içindeki tüm gövde bölümlerini okur ve her gövde parçasının içeriğinin nerede yazıldığını belirlemek için streamProvider örneğini ve okuma arabelleği boyutu olarak bufferSize öğesini kullanarak, sonuçta bir <see cref="T:System.Net.Http.HttpContent" /> örnekleri kümesi üretir.</summary>
+      <returns>Her bir örneğin bir gövde bölümünü temsil ettiği <see cref="T:System.Net.Http.HttpContent" /> örnekleri topluluğunu alma görevini temsil eden bir <see cref="T:System.Threading.Tasks.Task`1" /> öğesi.</returns>
+      <param name="content">Nesnenin içeriği için kullanılmak üzere var olan bir <see cref="T:System.Net.Http.HttpContent" /> örneği.</param>
+      <param name="streamProvider">Gövde parçalarının ayrıştırıldıkları gibi yazılacakları yer için çıkış akışları sağlayan bir akış sağlayıcı.</param>
+      <param name="bufferSize">İçeriği okumak için kullanılan arabelleğin boyutu.</param>
+      <typeparam name="T">MIME çok bölümlü türü.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMultipartExtensions.ReadAsMultipartAsync``1(System.Net.Http.HttpContent,``0,System.Int32,System.Threading.CancellationToken)">
+      <summary>Bir MIME çok bölümlü iletisi içindeki tüm gövde bölümlerini okur ve her gövde parçasının içeriğinin nerede yazıldığını belirlemek için streamProvider örneğini ve okuma arabelleği boyutu olarak bufferSize öğesini kullanarak, sonuçta bir <see cref="T:System.Net.Http.HttpContent" /> örnekleri kümesi üretir.</summary>
+      <returns>Her bir örneğin bir gövde bölümünü temsil ettiği <see cref="T:System.Net.Http.HttpContent" /> örnekleri topluluğunu alma görevini temsil eden bir <see cref="T:System.Threading.Tasks.Task`1" /> öğesi.</returns>
+      <param name="content">Nesnenin içeriği için kullanılmak üzere var olan bir <see cref="T:System.Net.Http.HttpContent" /> örneği.</param>
+      <param name="streamProvider">Gövde parçalarının ayrıştırıldıkları gibi yazılacakları yer için çıkış akışları sağlayan bir akış sağlayıcı.</param>
+      <param name="bufferSize">İçeriği okumak için kullanılan arabelleğin boyutu.</param>
+      <param name="cancellationToken">İşlemi iptal eden belirteç.</param>
+      <typeparam name="T">MIME çok bölümlü türü.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMultipartExtensions.ReadAsMultipartAsync``1(System.Net.Http.HttpContent,``0,System.Threading.CancellationToken)">
+      <summary>Bir MIME çok bölümlü iletisi içindeki tüm gövde bölümlerini okur ve her gövde parçasının içeriğinin nerede yazıldığını belirlemek için streamProvider örneğini kullanarak, sonuçta bir <see cref="T:System.Net.Http.HttpContent" /> örnekleri kümesi üretir.</summary>
+      <returns>Her bir örneğin bir gövde bölümünü temsil ettiği <see cref="T:System.Net.Http.HttpContent" /> örnekleri topluluğunu alma görevini temsil eden bir <see cref="T:System.Threading.Tasks.Task`1" /> öğesi.</returns>
+      <param name="content">Nesnenin içeriği için kullanılmak üzere var olan bir <see cref="T:System.Net.Http.HttpContent" /> örneği.</param>
+      <param name="streamProvider">Gövde parçalarının ayrıştırıldıkları gibi yazılacakları yer için çıkış akışları sağlayan bir akış sağlayıcı.</param>
+      <param name="cancellationToken">İşlemi iptal eden belirteç.</param>
+      <typeparam name="T">MIME çok bölümlü türü.</typeparam>
+    </member>
+    <member name="T:System.Net.Http.HttpMessageContent">
+      <summary> Bir <see cref="P:System.Net.Http.HttpMessageContent.HttpResponseMessage" /> veya <see cref="P:System.Net.Http.HttpMessageContent.HttpRequestMessage" /> öğesini "application/http" medya türüne sahip bir varlık olarak yalıtabilen türetilmiş <see cref="T:System.Net.Http.HttpContent" /> sınıfı. </summary>
+    </member>
+    <member name="M:System.Net.Http.HttpMessageContent.#ctor(System.Net.Http.HttpRequestMessage)">
+      <summary> Bir <see cref="P:System.Net.Http.HttpMessageContent.HttpRequestMessage" /> öğesini yalıtarak <see cref="T:System.Net.Http.HttpMessageContent" /> sınıfının yeni bir örneğini başlatır. </summary>
+      <param name="httpRequest">Yalıtılacak <see cref="P:System.Net.Http.HttpMessageContent.HttpResponseMessage" /> örneği.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpMessageContent.#ctor(System.Net.Http.HttpResponseMessage)">
+      <summary> Bir <see cref="P:System.Net.Http.HttpMessageContent.HttpResponseMessage" /> öğesini yalıtarak <see cref="T:System.Net.Http.HttpMessageContent" /> sınıfının yeni bir örneğini başlatır. </summary>
+      <param name="httpResponse">Yalıtılacak <see cref="P:System.Net.Http.HttpMessageContent.HttpResponseMessage" /> örneği.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpMessageContent.Dispose(System.Boolean)">
+      <summary> Yönetilmeyen ve isteğe bağlı olarak yönetilen kaynakları serbest bırakır. </summary>
+      <param name="disposing">Hem yönetilen hem de yönetilmeyen kaynakları serbest bırakmak için true; yalnızca yönetilmeyen kaynakları serbest bırakmak için false.</param>
+    </member>
+    <member name="P:System.Net.Http.HttpMessageContent.HttpRequestMessage">
+      <summary> HTTP istek iletisini alır. </summary>
+    </member>
+    <member name="P:System.Net.Http.HttpMessageContent.HttpResponseMessage">
+      <summary> HTTP yanıt iletisini alır. </summary>
+    </member>
+    <member name="M:System.Net.Http.HttpMessageContent.SerializeToStreamAsync(System.IO.Stream,System.Net.TransportContext)">
+      <summary> Nesne içeriğini, belirtilen akışa zaman uyumsuz olarak serileştirir. </summary>
+      <returns>Nesne içeriğini zaman uyumsuz olarak serileştiren <see cref="T:System.Threading.Tasks.Task" /> örneği.</returns>
+      <param name="stream">
+        <see cref="T:System.IO.Stream" /> öğesine yazılacak.</param>
+      <param name="context">İlişkili <see cref="T:System.Net.TransportContext" />.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpMessageContent.TryComputeLength(System.Int64@)">
+      <summary> Mümkünse, akış uzunluğunu hesaplar. </summary>
+      <returns>Uzunluk hesaplanmışsa true, hesaplanmamışsa false.</returns>
+      <param name="length">Akışın hesaplanan uzunluğu.</param>
+    </member>
+    <member name="T:System.Net.Http.HttpRequestHeadersExtensions">
+      <summary>
+        <see cref="T:System.Net.Http.Headers.HttpRequestHeaders" /> sınıfı için genişletme yöntemleri sağlar.</summary>
+    </member>
+    <member name="M:System.Net.Http.HttpRequestHeadersExtensions.GetCookies(System.Net.Http.Headers.HttpRequestHeaders)">
+      <summary>İstekteki tanımlama bilgisi üstbilgilerini alır.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Headers.CookieHeaderValue" /> örneklerinin koleksiyonu.</returns>
+      <param name="headers">İstek üstbilgileri.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpRequestHeadersExtensions.GetCookies(System.Net.Http.Headers.HttpRequestHeaders,System.String)">
+      <summary>Adı belirtilen değerle eşleşen bir tanımlama bilgisi durumu içeren istekteki var olan tüm tanımlama bilgisi üst bilgilerini alır.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Headers.CookieHeaderValue" /> örneklerinin koleksiyonu.</returns>
+      <param name="headers">İstek üstbilgileri.</param>
+      <param name="name">Eşleştirilecek tanımlama bilgisi durum adı.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpRequestMessageExtensions.CreateResponse(System.Net.Http.HttpRequestMessage)"></member>
+    <member name="M:System.Net.Http.HttpRequestMessageExtensions.CreateResponse(System.Net.Http.HttpRequestMessage,System.Net.HttpStatusCode)"></member>
+    <member name="T:System.Net.Http.HttpResponseHeadersExtensions">
+      <summary>
+        <see cref="T:System.Net.Http.Headers.HttpResponseHeaders" /> sınıfı için genişletme yöntemleri sağlar. </summary>
+    </member>
+    <member name="M:System.Net.Http.HttpResponseHeadersExtensions.AddCookies(System.Net.Http.Headers.HttpResponseHeaders,System.Collections.Generic.IEnumerable{System.Net.Http.Headers.CookieHeaderValue})">
+      <summary> Yanıta tanımlama bilgileri ekler. Her bir Tanımlama Bilgisi-Ayarla üstbilgisi tek bir <see cref="T:System.Net.Http.Headers.CookieHeaderValue" /> örnek olarak gösterilir. <see cref="T:System.Net.Http.Headers.CookieHeaderValue" />; bir ya da birden fazla <see cref="T:System.Net.Http.Headers.CookieState" /> örneğini ve etki alanı, yol ve diğer tanımlama bilgisi bilgilerini içerir. Her bir <see cref="T:System.Net.Http.Headers.CookieState" /> örneği, tanımlama bilgisi adı ve bu adla hangi tanımlama bilgisi durumunun ilişkili olduğunu içerir. Durum, tel üzerinde HTML Formunda URL kodlu veriler olarak kodlanmış <see cref="T:System.Collections.Specialized.NameValueCollection" /> biçimindedir.  Bu gösterim birden çok ilişkili "tanımlama bilgisinin" aynı Tanımlama Bilgisi üstbilgisi içinde taşınmasına ve yine de her bir tanımlama bilgisi durumu arasında ayrım sağlanmasına olanak tanır. Örnek bir Tanımlama Bilgisi üstbilgisi aşağıda gösterilmiştir. Bu örnekte, adları state1 ve state2 olan iki <see cref="T:System.Net.Http.Headers.CookieState" /> vardır. Ayrıca, her bir tanımlama bilgisi iki ad/değer çifti (ad1/değer1 ve ad2/değer2) ve (ad3/değer3 ve ad4/değer4) içerir. &lt;code&gt; Set-Cookie: state1:name1=value1&amp;amp;name2=value2; state2:name3=value3&amp;amp;name4=value4; domain=domain1; path=path1; &lt;/code&gt;</summary>
+      <param name="headers">Yanıt üstbilgileri</param>
+      <param name="cookies">Yanıta eklenecek tanımlama bilgisi değerleri.</param>
+    </member>
+    <member name="T:System.Net.Http.InvalidByteRangeException">
+      <summary>İstenilen aralıklardan hiçbirinin seçili kaynağın geçerli uzantısıyla çakışmaması durumunda <see cref="T:System.Net.Http.ByteRangeStreamContent" /> tarafından oluşturulan bir özel durum.Kaynağın geçerli uzantısı ContentRange özelliğinde belirtilir.</summary>
+    </member>
+    <member name="M:System.Net.Http.InvalidByteRangeException.#ctor(System.Net.Http.Headers.ContentRangeHeaderValue)">
+      <summary>
+        <see cref="T:System.Net.Http.InvalidByteRangeException" /> sınıfının yeni bir örneğini başlatır.</summary>
+    </member>
+    <member name="M:System.Net.Http.InvalidByteRangeException.#ctor(System.Net.Http.Headers.ContentRangeHeaderValue,System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+        <see cref="T:System.Net.Http.InvalidByteRangeException" /> sınıfının yeni bir örneğini başlatır.</summary>
+    </member>
+    <member name="M:System.Net.Http.InvalidByteRangeException.#ctor(System.Net.Http.Headers.ContentRangeHeaderValue,System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.InvalidByteRangeException" /> sınıfının yeni bir örneğini başlatır.</summary>
+    </member>
+    <member name="M:System.Net.Http.InvalidByteRangeException.#ctor(System.Net.Http.Headers.ContentRangeHeaderValue,System.String,System.Exception)">
+      <summary>
+        <see cref="T:System.Net.Http.InvalidByteRangeException" /> sınıfının yeni bir örneğini başlatır.</summary>
+    </member>
+    <member name="P:System.Net.Http.InvalidByteRangeException.ContentRange">
+      <summary> Kaynağın bir ContentRange üstbilgi alanı cinsinden belirtilen geçerli uzantısı. </summary>
+    </member>
+    <member name="T:System.Net.Http.MultipartFileData">
+      <summary>Çok bölümlü dosya verilerini temsil eder.</summary>
+    </member>
+    <member name="M:System.Net.Http.MultipartFileData.#ctor(System.Net.Http.Headers.HttpContentHeaders,System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.MultipartFileData" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="headers">Çok bölümlü dosya verileri üstbilgileri.</param>
+      <param name="localFileName">Çok bölümlü dosya verilerine ait yerel dosyanın adı.</param>
+    </member>
+    <member name="P:System.Net.Http.MultipartFileData.Headers">
+      <summary>Çok bölümlü dosya verilerinin üstbilgilerini alır veya ayarlar</summary>
+      <returns>Çok bölümlü dosya verileri üstbilgileri.</returns>
+    </member>
+    <member name="P:System.Net.Http.MultipartFileData.LocalFileName">
+      <summary>Çok bölümlü dosya verilerine ait yerel dosyanın adını alır veya ayarlar.</summary>
+      <returns>Çok bölümlü dosya verilerine ait yerel dosyanın adı.</returns>
+    </member>
+    <member name="T:System.Net.Http.MultipartFileStreamProvider">
+      <summary>MIME çok bölümlü iletinin her bir MIME gövde bölümünü bir <see cref="T:System.IO.FileStream" /> kullanarak bir dosyaya yazmak için uygun <see cref="T:System.Net.Http.IMultipartStreamProvider" /> öğesini temsil eder.</summary>
+    </member>
+    <member name="M:System.Net.Http.MultipartFileStreamProvider.#ctor(System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.MultipartFileStreamProvider" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="rootPath">MIME çok bölümlü gövde bölümlerinin içeriğinin yazıldığı kök yolu.</param>
+    </member>
+    <member name="M:System.Net.Http.MultipartFileStreamProvider.#ctor(System.String,System.Int32)">
+      <summary>
+        <see cref="T:System.Net.Http.MultipartFileStreamProvider" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="rootPath">MIME çok bölümlü gövde bölümlerinin içeriğinin yazıldığı kök yolu.</param>
+      <param name="bufferSize">Dosyaya yazmalar için arabelleğe alınan bayt sayısı.</param>
+    </member>
+    <member name="P:System.Net.Http.MultipartFileStreamProvider.BufferSize">
+      <summary>Dosyaya yazmalar için arabelleğe alınan bayt sayısını alır veya ayarlar.</summary>
+      <returns>Dosyaya yazmalar için arabelleğe alınan bayt sayısı.</returns>
+    </member>
+    <member name="P:System.Net.Http.MultipartFileStreamProvider.FileData">
+      <summary>Çok bölümlü dosya verilerini alır veya ayarlar.</summary>
+      <returns>Çok bölümlü dosya verileri.</returns>
+    </member>
+    <member name="M:System.Net.Http.MultipartFileStreamProvider.GetLocalFileName(System.Net.Http.Headers.HttpContentHeaders)">
+      <summary>Geçerli MIME gövde bölümünün içeriğinin depolanacağı bir mutlak dosya adı oluşturmak için kök yoluyla birleştirilecek olan yerel dosyanın adını alır.</summary>
+      <returns>Herhangi bir yol bileşeni içermeyen bir göreli dosya adı.</returns>
+      <param name="headers">Geçerli MIME gövde bölümüne ilişkin üstbilgiler.</param>
+    </member>
+    <member name="M:System.Net.Http.MultipartFileStreamProvider.GetStream(System.Net.Http.HttpContent,System.Net.Http.Headers.HttpContentHeaders)">
+      <summary>İleti gövde bölümünün yazıldığı akış örneğini alır.</summary>
+      <returns>Mesaj gövde bölümünün yazıldığı <see cref="T:System.IO.Stream" /> örneği.</returns>
+      <param name="parent">HTTP içeriği.</param>
+      <param name="headers">Gövde bölümünü açıklayan üstbilgi alanları.</param>
+    </member>
+    <member name="P:System.Net.Http.MultipartFileStreamProvider.RootPath">
+      <summary>MIME çok bölümlü gövde bölümlerinin içeriğinin yazıldığı kök yolunu alır veya ayarlar.</summary>
+      <returns>MIME çok bölümlü gövde bölümlerinin içeriğinin yazıldığı kök yolu.</returns>
+    </member>
+    <member name="T:System.Net.Http.MultipartFormDataRemoteStreamProvider">
+      <summary>Dosya içeriğini bir uzak depolama <see cref="T:System.IO.Stream" /> öğesine yazmak için HTML dosya yüklemeleriyle birlikte kullanım için uygun bir <see cref="T:System.Net.Http.MultipartStreamProvider" /> uygulaması.Akış sağlayıcısı Content-Disposition üstbilgi alanına bakarak bir filename parametresinin olup olmadığına göre bir çıktı <see cref="T:System.IO.Stream" /> belirler.Content-Disposition üstbilgi alanında bir filename parametresi varsa gövde bölümü <see cref="M:System.Net.Http.MultipartFormDataRemoteStreamProvider.GetRemoteStream(System.Net.Http.HttpContent,System.Net.Http.Headers.HttpContentHeaders)" /> tarafından sağlanan uzak bir <see cref="T:System.IO.Stream" /> öğesine yazılır.Aksi takdirde bir <see cref="T:System.IO.MemoryStream" /> öğesine yazılır.</summary>
+    </member>
+    <member name="M:System.Net.Http.MultipartFormDataRemoteStreamProvider.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.MultipartFormDataRemoteStreamProvider" /> sınıfının yeni bir örneğini başlatır.</summary>
+    </member>
+    <member name="M:System.Net.Http.MultipartFormDataRemoteStreamProvider.ExecutePostProcessingAsync">
+      <summary>Form verileri olarak dosya olmayan içerikleri okur.</summary>
+      <returns>Son işlemeyi temsil eden bir <see cref="T:System.Threading.Tasks.Task" />.</returns>
+    </member>
+    <member name="M:System.Net.Http.MultipartFormDataRemoteStreamProvider.ExecutePostProcessingAsync(System.Threading.CancellationToken)">
+      <summary>Form verileri olarak dosya olmayan içerikleri okur.</summary>
+      <returns>Son işlemeyi temsil eden bir <see cref="T:System.Threading.Tasks.Task" />.</returns>
+      <param name="cancellationToken">İptal isteklerini izleyecek simge.</param>
+    </member>
+    <member name="P:System.Net.Http.MultipartFormDataRemoteStreamProvider.FileData">
+      <summary>Çok bölümlü form verilerinin bir bölümü olarak geçirilen dosya verilerinin bir koleksiyonunu alır.</summary>
+    </member>
+    <member name="P:System.Net.Http.MultipartFormDataRemoteStreamProvider.FormData">
+      <summary>Çok bölümlü form verilerinin bir bölümü olarak geçirilen form verilerinin bir <see cref="T:System.Collections.Specialized.NameValueCollection" /> değerini alır.</summary>
+    </member>
+    <member name="M:System.Net.Http.MultipartFormDataRemoteStreamProvider.GetRemoteStream(System.Net.Http.HttpContent,System.Net.Http.Headers.HttpContentHeaders)">
+      <summary>
+        <see cref="M:System.Net.Http.MultipartFormDataRemoteStreamProvider.GetStream(System.Net.Http.HttpContent,System.Net.Http.Headers.HttpContentHeaders)" /> için bir <see cref="T:System.Net.Http.RemoteStreamInfo" /> sağlar.Verinin yazılması gereken uzak akışı sağlamak için bu yöntemi geçersiz kılın.</summary>
+      <returns>Uzak bir akışa dosyanın nereye yazılması gerektiğini ve dosyanın erişilebileceği konumu belirten bir sonuç.Null olamaz ve akış yazılabilir olmalıdır.</returns>
+      <param name="parent">Üst <see cref="T:System.Net.Http.HttpContent" /> MIME çok bölümlü örneği.</param>
+      <param name="headers">Gövde bölümü içeriğini açıklayan üstbilgi alanları.</param>
+    </member>
+    <member name="M:System.Net.Http.MultipartFormDataRemoteStreamProvider.GetStream(System.Net.Http.HttpContent,System.Net.Http.Headers.HttpContentHeaders)"></member>
+    <member name="T:System.Net.Http.MultipartFormDataStreamProvider">
+      <summary>Dosya içeriğini bir <see cref="T:System.IO.FileStream" /> öğesine yazmak için HTML dosya yüklemeleriyle birlikte kullanım için uygun bir <see cref="T:System.Net.Http.IMultipartStreamProvider" /> öğesini temsil eder.</summary>
+    </member>
+    <member name="M:System.Net.Http.MultipartFormDataStreamProvider.#ctor(System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.MultipartFormDataStreamProvider" /> sınıfının yeni bir örneğini başlatır. </summary>
+      <param name="rootPath">MIME çok bölümlü gövde bölümlerinin içeriğinin yazıldığı kök yolu.</param>
+    </member>
+    <member name="M:System.Net.Http.MultipartFormDataStreamProvider.#ctor(System.String,System.Int32)">
+      <summary>
+        <see cref="T:System.Net.Http.MultipartFormDataStreamProvider" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="rootPath">MIME çok bölümlü gövde bölümlerinin içeriğinin yazıldığı kök yolu.</param>
+      <param name="bufferSize">Dosyaya yazmalar için arabelleğe alınan bayt sayısı.</param>
+    </member>
+    <member name="M:System.Net.Http.MultipartFormDataStreamProvider.ExecutePostProcessingAsync">
+      <summary>Form verileri olarak dosya olmayan içerikleri okur.</summary>
+      <returns>Zaman uyumsuz işlemi temsil eden bir görev.</returns>
+    </member>
+    <member name="M:System.Net.Http.MultipartFormDataStreamProvider.ExecutePostProcessingAsync(System.Threading.CancellationToken)"></member>
+    <member name="P:System.Net.Http.MultipartFormDataStreamProvider.FormData">
+      <summary>Çok bölümlü form verilerinin bir bölümü olarak geçirilen form verilerinin bir <see cref="T:System.Collections.Specialized.NameValueCollection" /> değerini alır.</summary>
+      <returns>Form verilerinin <see cref="T:System.Collections.Specialized.NameValueCollection" /> değeri.</returns>
+    </member>
+    <member name="M:System.Net.Http.MultipartFormDataStreamProvider.GetStream(System.Net.Http.HttpContent,System.Net.Http.Headers.HttpContentHeaders)">
+      <summary>İleti gövde bölümünün yazıldığı akış örneğini alır.</summary>
+      <returns>İleti gövde bölümünün yazıldığı <see cref="T:System.IO.Stream" /> örneği.</returns>
+      <param name="parent">Bu gövde bölümünü içeren HTTP içeriği.</param>
+      <param name="headers">Gövde bölümünü tanımlayan üstbilgi alanları.</param>
+    </member>
+    <member name="T:System.Net.Http.MultipartMemoryStreamProvider">
+      <summary>Çok bölümlü bir bellek akış sağlayıcısını temsil eder.</summary>
+    </member>
+    <member name="M:System.Net.Http.MultipartMemoryStreamProvider.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.MultipartMemoryStreamProvider" /> sınıfının yeni bir örneğini başlatır.</summary>
+    </member>
+    <member name="M:System.Net.Http.MultipartMemoryStreamProvider.GetStream(System.Net.Http.HttpContent,System.Net.Http.Headers.HttpContentHeaders)">
+      <summary>
+        <see cref="T:System.Net.Http.MultipartMemoryStreamProvider" /> için <see cref="T:System.IO.Stream" /> öğesini döndürür.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.MultipartMemoryStreamProvider" /> öğesinin <see cref="T:System.IO.Stream" /> değeri.</returns>
+      <param name="parent">Bir <see cref="T:System.Net.Http.HttpContent" /> nesnesi.</param>
+      <param name="headers">HTTP içerik üstbilgileri.</param>
+    </member>
+    <member name="T:System.Net.Http.MultipartRelatedStreamProvider">
+      <summary>Çok bölümlü ilgili çoklu akışın sağlayıcısını temsil eder.</summary>
+    </member>
+    <member name="M:System.Net.Http.MultipartRelatedStreamProvider.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.MultipartRelatedStreamProvider" /> sınıfının yeni bir örneğini başlatır.</summary>
+    </member>
+    <member name="M:System.Net.Http.MultipartRelatedStreamProvider.GetStream(System.Net.Http.HttpContent,System.Net.Http.Headers.HttpContentHeaders)">
+      <summary>Sağlayıcının ilgili akışını alır.</summary>
+      <returns>İçerik üstbilgileri.</returns>
+      <param name="parent">Ana içerik.</param>
+      <param name="headers">Http içerik üstbilgileri.</param>
+    </member>
+    <member name="P:System.Net.Http.MultipartRelatedStreamProvider.RootContent">
+      <summary>
+        <see cref="T:System.Net.Http.MultipartRelatedStreamProvider" /> öğesinin kök içeriğini alır.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.MultipartRelatedStreamProvider" /> öğesinin kök içeriği.</returns>
+    </member>
+    <member name="T:System.Net.Http.MultipartRemoteFileData">
+      <summary>Uzak depolama için çok bölümlü dosya verilerini temsil eder.</summary>
+    </member>
+    <member name="M:System.Net.Http.MultipartRemoteFileData.#ctor(System.Net.Http.Headers.HttpContentHeaders,System.String,System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.MultipartRemoteFileData" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="headers">Çok bölümlü dosya verileri üstbilgileri.</param>
+      <param name="location">Uzak dosyanın konumu.</param>
+      <param name="fileName">Uzak dosyanın adı.</param>
+    </member>
+    <member name="P:System.Net.Http.MultipartRemoteFileData.FileName">
+      <summary>Uzak dosyanın adını alır.</summary>
+    </member>
+    <member name="P:System.Net.Http.MultipartRemoteFileData.Headers">
+      <summary>Çok bölümlü dosya verileri üstbilgilerini alır.</summary>
+    </member>
+    <member name="P:System.Net.Http.MultipartRemoteFileData.Location">
+      <summary>Uzak dosyanın konumunu alır.</summary>
+    </member>
+    <member name="T:System.Net.Http.MultipartStreamProvider">
+      <summary>MIME çok bölümlü ayrıştırıcı tarafından MIME çok bölümlü genişletme yöntemlerinin (bkz. <see cref="T:System.Net.Http.HttpContentMultipartExtensions" />) bir parçası olarak sağlanan üstbilgileri inceleyen ve gövde bölümüne yazılması için döndürülecek akış türünü belirleyen bir akış sağlayıcısını temsil eder.</summary>
+    </member>
+    <member name="M:System.Net.Http.MultipartStreamProvider.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.MultipartStreamProvider" /> sınıfının yeni bir örneğini başlatır.</summary>
+    </member>
+    <member name="P:System.Net.Http.MultipartStreamProvider.Contents">
+      <summary>Bu <see cref="T:System.Net.Http.MultipartStreamProvider" /> öğesinin içeriğini alır veya ayarlar.</summary>
+      <returns>Bu <see cref="T:System.Net.Http.MultipartStreamProvider" /> öğesinin içeriği.</returns>
+    </member>
+    <member name="M:System.Net.Http.MultipartStreamProvider.ExecutePostProcessingAsync">
+      <summary>Bu <see cref="T:System.Net.Http.MultipartStreamProvider" /> öğesinin işleme sonra işlemini yürütür.</summary>
+      <returns>Bu işlemin zaman uyumsuz görevi.</returns>
+    </member>
+    <member name="M:System.Net.Http.MultipartStreamProvider.ExecutePostProcessingAsync(System.Threading.CancellationToken)">
+      <summary>Bu <see cref="T:System.Net.Http.MultipartStreamProvider" /> öğesinin işleme sonra işlemini yürütür.</summary>
+      <returns>Bu işlemin zaman uyumsuz görevi.</returns>
+      <param name="cancellationToken">İşlemi iptal eden belirteç.</param>
+    </member>
+    <member name="M:System.Net.Http.MultipartStreamProvider.GetStream(System.Net.Http.HttpContent,System.Net.Http.Headers.HttpContentHeaders)">
+      <summary>Gövde bölümünün yazılacağı akışı alır.Bir MIME çok bölümlü gövde bölümü ayrıştırıldığında bu yöntem çağrılır.</summary>
+      <returns>Mesaj gövde bölümünün yazıldığı <see cref="T:System.IO.Stream" /> örneği.</returns>
+      <param name="parent">HTTP içeriği.</param>
+      <param name="headers">Gövde bölümünü açıklayan üstbilgi alanları.</param>
+    </member>
+    <member name="T:System.Net.Http.ObjectContent">
+      <summary> Bu içeriği yazarken değerin serisini kaldırmak için kullanılacak olan ilişkili bir <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> ile birlikte bir değer içerir. </summary>
+    </member>
+    <member name="M:System.Net.Http.ObjectContent.#ctor(System.Type,System.Object,System.Net.Http.Formatting.MediaTypeFormatter)">
+      <summary>
+        <see cref="T:System.Net.Http.ObjectContent" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="type">Bu örneğin içereceği nesne türü.</param>
+      <param name="value">Bu örneğin içereceği nesne değeri.</param>
+      <param name="formatter">Değer serileştirilirken kullanılacak biçimlendirici.</param>
+    </member>
+    <member name="M:System.Net.Http.ObjectContent.#ctor(System.Type,System.Object,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue)">
+      <summary>
+        <see cref="T:System.Net.Http.ObjectContent" /> sınıfının yeni bir örneğini başlatır. </summary>
+      <param name="type">Bu örneğin içereceği nesne türü.</param>
+      <param name="value">Bu örneğin içereceği nesne değeri.</param>
+      <param name="formatter">Değer serileştirilirken kullanılacak biçimlendirici.</param>
+      <param name="mediaType">Content-Type üstbilgisinin yetkili değeri.Biçimlendiricinin varsayılan içerik türünün kullanılacağı durumda null değeri olabilir.</param>
+    </member>
+    <member name="M:System.Net.Http.ObjectContent.#ctor(System.Type,System.Object,System.Net.Http.Formatting.MediaTypeFormatter,System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.ObjectContent" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="type">Bu örneğin içereceği nesne türü.</param>
+      <param name="value">Bu örneğin içereceği nesne değeri.</param>
+      <param name="formatter">Değer serileştirilirken kullanılacak biçimlendirici.</param>
+      <param name="mediaType">Content-Type üstbilgisinin yetkili değeri.</param>
+    </member>
+    <member name="P:System.Net.Http.ObjectContent.Formatter">
+      <summary>Bu içerik örneğiyle ilişkili medya türü biçimlendiricisini alır.</summary>
+      <returns>Bu içerik örneğiyle ilişkili medya türü biçimlendiricisi.</returns>
+    </member>
+    <member name="P:System.Net.Http.ObjectContent.ObjectType">
+      <summary>Bu <see cref="T:System.Net.Http.ObjectContent" /> örneği tarafından yönetilen nesne türünü alır.</summary>
+      <returns>Nesne türü.</returns>
+    </member>
+    <member name="M:System.Net.Http.ObjectContent.SerializeToStreamAsync(System.IO.Stream,System.Net.TransportContext)">
+      <summary>Nesne içeriğini, belirtilen akışa zaman uyumsuz olarak serileştirir.</summary>
+      <returns>Eşzamansız işlemi temsil eden görev nesnesi.</returns>
+      <param name="stream">Yazılacak akış.</param>
+      <param name="context">İlişkili <see cref="T:System.Net.TransportContext" />.</param>
+    </member>
+    <member name="M:System.Net.Http.ObjectContent.TryComputeLength(System.Int64@)">
+      <summary>Mümkünse, akış uzunluğunu hesaplar.</summary>
+      <returns>Uzunluk hesaplanmışsa true, hesaplanmamışsa false.</returns>
+      <param name="length">Akışın hesaplanan uzunluğunu alır.</param>
+    </member>
+    <member name="P:System.Net.Http.ObjectContent.Value">
+      <summary>İçerik değerini alır veya ayarlar.</summary>
+      <returns>İçerik değeri.</returns>
+    </member>
+    <member name="T:System.Net.Http.ObjectContent`1">
+      <summary>
+        <see cref="T:System.Net.Http.ObjectContent" /> genel formu. </summary>
+      <typeparam name="T">Bu sınıfın içereceği nesne türü.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.ObjectContent`1.#ctor(`0,System.Net.Http.Formatting.MediaTypeFormatter)">
+      <summary>
+        <see cref="T:System.Net.Http.ObjectContent`1" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="value">Bu örneğin içereceği nesne değeri.</param>
+      <param name="formatter">Değer serileştirilirken kullanılacak biçimlendirici.</param>
+    </member>
+    <member name="M:System.Net.Http.ObjectContent`1.#ctor(`0,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue)">
+      <summary> &lt;see cref="T:System.Net.Http.ObjectContent`1" /&gt; sınıfının yeni bir örneğini başlatır. </summary>
+      <param name="value">Bu örneğin içereceği nesne değeri.</param>
+      <param name="formatter">Değer serileştirilirken kullanılacak biçimlendirici.</param>
+      <param name="mediaType">Content-Type üstbilgisinin yetkili değeri.Biçimlendiricinin varsayılan içerik türünün kullanılacağı durumda null değeri olabilir.</param>
+    </member>
+    <member name="M:System.Net.Http.ObjectContent`1.#ctor(`0,System.Net.Http.Formatting.MediaTypeFormatter,System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.ObjectContent`1" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="value">Bu örneğin içereceği nesne değeri.</param>
+      <param name="formatter">Değer serileştirilirken kullanılacak biçimlendirici.</param>
+      <param name="mediaType">Content-Type üstbilgisinin yetkili değeri.</param>
+    </member>
+    <member name="T:System.Net.Http.PushStreamContent">
+      <summary>Bir veri üreticisinin bir akışı kullanarak doğrudan (zaman uyumlu veya uyumsuz olarak) yazmak istediği senaryoları sağlar.</summary>
+    </member>
+    <member name="M:System.Net.Http.PushStreamContent.#ctor(System.Action{System.IO.Stream,System.Net.Http.HttpContent,System.Net.TransportContext})">
+      <summary>
+        <see cref="T:System.Net.Http.PushStreamContent" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="onStreamAvailable">Eylemin doğrudan bu akışa yazılmasına izin veren bir çıkış akışı varken çağırılan eylem. </param>
+    </member>
+    <member name="M:System.Net.Http.PushStreamContent.#ctor(System.Action{System.IO.Stream,System.Net.Http.HttpContent,System.Net.TransportContext},System.Net.Http.Headers.MediaTypeHeaderValue)">
+      <summary>
+        <see cref="T:System.Net.Http.PushStreamContent" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="onStreamAvailable">Eylemin doğrudan bu akışa yazılmasına izin veren bir çıkış akışı varken çağırılan eylem.</param>
+      <param name="mediaType">Medya türü.</param>
+    </member>
+    <member name="M:System.Net.Http.PushStreamContent.#ctor(System.Action{System.IO.Stream,System.Net.Http.HttpContent,System.Net.TransportContext},System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.PushStreamContent" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="onStreamAvailable">Eylemin doğrudan bu akışa yazılmasına izin veren bir çıkış akışı varken çağırılan eylem.</param>
+      <param name="mediaType">Medya türü.</param>
+    </member>
+    <member name="M:System.Net.Http.PushStreamContent.#ctor(System.Func{System.IO.Stream,System.Net.Http.HttpContent,System.Net.TransportContext,System.Threading.Tasks.Task})">
+      <summary>
+        <see cref="T:System.Net.Http.PushStreamContent" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="onStreamAvailable">Eylemin doğrudan bu akışa yazılmasına izin veren bir çıkış akışı varken çağırılan eylem.</param>
+    </member>
+    <member name="M:System.Net.Http.PushStreamContent.#ctor(System.Func{System.IO.Stream,System.Net.Http.HttpContent,System.Net.TransportContext,System.Threading.Tasks.Task},System.Net.Http.Headers.MediaTypeHeaderValue)">
+      <summary>
+        <see cref="T:System.Net.Http.PushStreamContent" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="onStreamAvailable">Eylemin doğrudan bu akışa yazılmasına izin veren bir çıkış akışı varken çağırılan eylem.</param>
+      <param name="mediaType">Medya türü.</param>
+    </member>
+    <member name="M:System.Net.Http.PushStreamContent.#ctor(System.Func{System.IO.Stream,System.Net.Http.HttpContent,System.Net.TransportContext,System.Threading.Tasks.Task},System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.PushStreamContent" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="onStreamAvailable">Eylemin doğrudan bu akışa yazılmasına izin veren bir çıkış akışı varken çağırılan eylem.</param>
+      <param name="mediaType">Medya türü.</param>
+    </member>
+    <member name="M:System.Net.Http.PushStreamContent.SerializeToStreamAsync(System.IO.Stream,System.Net.TransportContext)">
+      <summary>Anında içeriği zaman uyumsuz olarak akışa serileştirir.</summary>
+      <returns>Serileştirilen anında içerik.</returns>
+      <param name="stream">Anında içeriğin serileştirileceği akış.</param>
+      <param name="context">Bağlam.</param>
+    </member>
+    <member name="M:System.Net.Http.PushStreamContent.TryComputeLength(System.Int64@)">
+      <summary>Akış içeriğinin bayt cinsinden geçerli bir uzunluğu olup olmadığını belirler.</summary>
+      <returns>Uzunluk geçerli ise true; değilse, false.</returns>
+      <param name="length">Akış içeriğinin bayt cinsinden uzunluğu.</param>
+    </member>
+    <member name="T:System.Net.Http.RemoteStreamInfo">
+      <summary>
+        <see cref="M:System.Net.Http.MultipartFormDataRemoteStreamProvider.GetRemoteStream(System.Net.Http.HttpContent,System.Net.Http.Headers.HttpContentHeaders)" /> öğesine yönelik sonuçları gösterir.</summary>
+    </member>
+    <member name="M:System.Net.Http.RemoteStreamInfo.#ctor(System.IO.Stream,System.String,System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.RemoteStreamInfo" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="remoteStream">Dosyanın yazılacağı uzak akış örneği.</param>
+      <param name="location">Uzak dosyanın konumu.</param>
+      <param name="fileName">Uzak dosyanın adı.</param>
+    </member>
+    <member name="P:System.Net.Http.RemoteStreamInfo.FileName">
+      <summary>Uzak dosyanın konumunu alır.</summary>
+    </member>
+    <member name="P:System.Net.Http.RemoteStreamInfo.Location">
+      <summary>Uzak dosyanın konumunu alır.</summary>
+    </member>
+    <member name="P:System.Net.Http.RemoteStreamInfo.RemoteStream">
+      <summary>Dosyanın yazılacağı uzak akış örneğini alır.</summary>
+    </member>
+    <member name="T:System.Net.Http.UnsupportedMediaTypeException">
+      <summary> Bir isteğin medya türünün desteklenmediğini belirtmek üzere bir özel durum türü tanımlar. </summary>
+    </member>
+    <member name="M:System.Net.Http.UnsupportedMediaTypeException.#ctor(System.String,System.Net.Http.Headers.MediaTypeHeaderValue)">
+      <summary>
+        <see cref="T:System.Net.Http.UnsupportedMediaTypeException" /> sınıfının yeni bir örneğini başlatır. </summary>
+      <param name="message">Hatayı açıklayan ileti.</param>
+      <param name="mediaType">Desteklenmeyen medya türü.</param>
+    </member>
+    <member name="P:System.Net.Http.UnsupportedMediaTypeException.MediaType">
+      <summary>Medya türünü alır veya ayarlar.</summary>
+      <returns>Medya türü.</returns>
+    </member>
+    <member name="T:System.Net.Http.UriExtensions">
+      <summary>Güçlü şekilde yazılan nesnelerin <see cref="T:System.Uri" /> örneklerinin sorgu bileşeninden okunmasına olanak tanımak için genişletme yöntemlerini kapsar. </summary>
+    </member>
+    <member name="M:System.Net.Http.UriExtensions.ParseQueryString(System.Uri)">
+      <summary>Belirtilen URI sorgu bölümünü ayrıştırır.</summary>
+      <returns>Sorgu parametrelerini kapsayan bir <see cref="T:System.Collections.Specialized.NameValueCollection" /> öğesi.</returns>
+      <param name="address">Ayrıştırılacak URI.</param>
+    </member>
+    <member name="M:System.Net.Http.UriExtensions.TryReadQueryAs(System.Uri,System.Type,System.Object@)">
+      <summary>Belirtilen türün bir nesnesi olarak sorgu dizesinde sağlanan HTML formundaki URL kodlanmış verilerini okur.</summary>
+      <returns>URI sorgu bileşeni belirtilen tür olarak okunabiliyorsa true, okunamıyorsa false.</returns>
+      <param name="address">Okunacak URI.</param>
+      <param name="type">Okunacak nesnenin türü.</param>
+      <param name="value">Bu yöntem döndürüldüğünde, URI sorgu bileşeninden başlatılan bir nesne içerir. Bu parametreye başlatılmamış olarak davranılır.</param>
+    </member>
+    <member name="M:System.Net.Http.UriExtensions.TryReadQueryAs``1(System.Uri,``0@)">
+      <summary>Belirtilen türün bir nesnesi olarak sorgu dizesinde sağlanan HTML formundaki URL kodlanmış verilerini okur.</summary>
+      <returns>URI sorgu bileşeni belirtilen tür olarak okunabiliyorsa true, okunamıyorsa false.</returns>
+      <param name="address">Okunacak URI.</param>
+      <param name="value">Bu yöntem döndürüldüğünde, URI sorgu bileşeninden başlatılan bir nesne içerir. Bu parametreye başlatılmamış olarak davranılır.</param>
+      <typeparam name="T">Okunacak nesnenin türü.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.UriExtensions.TryReadQueryAsJson(System.Uri,Newtonsoft.Json.Linq.JObject@)">
+      <summary>Bir <see cref="T:Newtonsoft.Json.Linq.JObject" /> nesnesi olarak <see cref="T:System.Uri" /> sorgu bileşeninde sağlanan HTML formundaki URL kodlanmış verilerini okur.</summary>
+      <returns>  Sorgu bileşeni <see cref="T:Newtonsoft.Json.Linq.JObject" /> olarak okunabiliyorsa true, okunamıyorsa false.</returns>
+      <param name="address">Okunacak <see cref="T:System.Uri" /> örneği.</param>
+      <param name="value">Bu örnek kullanılarak bir nesne başlatılacaktır veya dönüştürme gerçekleştirilemediği takdirde boş olacaktır.</param>
+    </member>
+    <member name="T:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter">
+      <summary>Bson ve Json desteği sağlayacak soyut medya türü biçimlendirici sınıfı.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter" /> sınıfının yeni bir örneğini başlatır.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter.#ctor(System.Net.Http.Formatting.BaseJsonMediaTypeFormatter)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="formatter">Ayarları kopyalanacak <see cref="T:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter" /> örneği.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter.CanReadType(System.Type)">
+      <summary>Bu biçimlendiricinin belirtilen türe ait nesneleri okuyabilip okuyamayacağını belirler.</summary>
+      <returns>Bu türdeki nesneler okunabiliyorsa true, aksi takdirde false.</returns>
+      <param name="type">Okunacak nesnenin türü.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter.CanWriteType(System.Type)">
+      <summary>Bu biçimlendiricinin belirtilen türe ait nesneleri yazıp yazamayacağını belirler.</summary>
+      <returns>Bu türdeki nesneler yazılabiliyorsa true, aksi takdirde false.</returns>
+      <param name="type">Yazılacak nesnenin türü.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter.CreateDefaultSerializerSettings">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter" /> tarafından kullanılan varsayılan ayarlarla bir <see cref="T:Newtonsoft.Json.JsonSerializerSettings" /> örneği oluşturur.</summary>
+      <returns>
+        <see cref="T:Newtonsoft.Json.JsonSerializerSettings" /> döndürür.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter.CreateJsonReader(System.Type,System.IO.Stream,System.Text.Encoding)">
+      <summary>
+        <see cref="T:Newtonsoft.Json.JsonReader" /> almak üzere seri durumundan çıkarma sırasında çağrılır.</summary>
+      <returns>Seri durumundan çıkarma sırasında kullanılacak okuyucu.</returns>
+      <param name="type">Okunacak nesnenin türü.</param>
+      <param name="readStream">Okunacak akış.</param>
+      <param name="effectiveEncoding">Okuma sırasında kullanılacak kodlama.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter.CreateJsonSerializer">
+      <summary>
+        <see cref="T:Newtonsoft.Json.JsonSerializer" /> almak üzere serileştirme ve seri durumundan çıkarma sırasında çağrılır.</summary>
+      <returns>Serileştirme ve seri durumundan çıkarma sırasına kullanılan JsonSerializer.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter.CreateJsonWriter(System.Type,System.IO.Stream,System.Text.Encoding)">
+      <summary>
+        <see cref="T:Newtonsoft.Json.JsonWriter" /> almak üzere serileştirme sırasında çağrılır.</summary>
+      <returns>Serileştirme sırasında kullanılacak yazıcı.</returns>
+      <param name="type">Yazılacak nesnenin türü.</param>
+      <param name="writeStream">Yazılacak akış.</param>
+      <param name="effectiveEncoding">Yazma sırasında kullanılacak kodlama.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter.MaxDepth">
+      <summary>Bu biçimlendiricinin izin verdiği derinlik üst sınırını alır veya ayarlar.</summary>
+      <returns>Bu biçimlendirici tarafından izin verilen maksimum derinlik.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter.ReadFromStream(System.Type,System.IO.Stream,System.Text.Encoding,System.Net.Http.Formatting.IFormatterLogger)">
+      <summary>Belirtilen türdeki bir nesneyi belirtilen akıştan okumak için seri durumundan çıkarma sırasında çağrılır.</summary>
+      <returns>Okunan nesne.</returns>
+      <param name="type">Okunacak nesnenin türü.</param>
+      <param name="readStream">Okunacak akış.</param>
+      <param name="effectiveEncoding">Okuma sırasında kullanılacak kodlama.</param>
+      <param name="formatterLogger">Olayların kaydedileceği günlükçü.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter.ReadFromStreamAsync(System.Type,System.IO.Stream,System.Net.Http.HttpContent,System.Net.Http.Formatting.IFormatterLogger)">
+      <summary>Belirtilen türdeki bir nesneyi belirtilen akıştan okumak için seri durumundan çıkarma sırasında çağrılır.</summary>
+      <returns>Sonucu, okunmuş nesne örneği olacak bir görev.</returns>
+      <param name="type">Okunacak nesnenin türü.</param>
+      <param name="readStream">Okunacak akış.</param>
+      <param name="content">Okunmakta olan içeriğe ilişkin <see cref="T:System.Net.Http.HttpContent" />.</param>
+      <param name="formatterLogger">Olayların kaydedileceği günlükçü.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter.SerializerSettings">
+      <summary>JsonSerializer öğesini yapılandırmak için kullanılan JsonSerializerSettings öğesini alır veya ayarlar.</summary>
+      <returns>JsonSerializer öğesini yapılandırmak için kullanılan JsonSerializerSettings öğesi.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter.WriteToStream(System.Type,System.Object,System.IO.Stream,System.Text.Encoding)">
+      <summary>Belirtilen türdeki bir nesneyi belirtilen akışa yazmak için serileştirme sırasında çağrılır.</summary>
+      <param name="type">Yazılacak nesnenin türü.</param>
+      <param name="value">Yazılacak nesne.</param>
+      <param name="writeStream">Yazılacak akış.</param>
+      <param name="effectiveEncoding">Yazma sırasında kullanılacak kodlama.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter.WriteToStreamAsync(System.Type,System.Object,System.IO.Stream,System.Net.Http.HttpContent,System.Net.TransportContext,System.Threading.CancellationToken)">
+      <summary>Belirtilen türdeki bir nesneyi belirtilen akışa yazmak için serileştirme sırasında çağrılır.</summary>
+      <returns>
+        <see cref="T:System.Threading.Tasks.Task" /> döndürür.</returns>
+      <param name="type">Yazılacak nesnenin türü.</param>
+      <param name="value">Yazılacak nesne.</param>
+      <param name="writeStream">Yazılacak akış.</param>
+      <param name="content">Yazılmakta olan içeriğe ilişkin <see cref="T:System.Net.Http.HttpContent" />.</param>
+      <param name="transportContext">Taşıma bağlamı.</param>
+      <param name="cancellationToken">İptalleri izleyecek belirteç.</param>
+    </member>
+    <member name="T:System.Net.Http.Formatting.BsonMediaTypeFormatter">
+      <summary>Bson işleyecek medya türü biçimlendiricisini temsil eder.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BsonMediaTypeFormatter.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.BsonMediaTypeFormatter" /> sınıfının yeni bir örneğini başlatır.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BsonMediaTypeFormatter.#ctor(System.Net.Http.Formatting.BsonMediaTypeFormatter)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.BsonMediaTypeFormatter" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="formatter">Ayarları kopyalanacak biçimlendirici.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BsonMediaTypeFormatter.CreateJsonReader(System.Type,System.IO.Stream,System.Text.Encoding)">
+      <summary>
+        <see cref="T:Newtonsoft.Json.JsonReader" /> almak üzere seri durumundan çıkarma sırasında çağrılır.</summary>
+      <returns>Seri durumundan çıkarma sırasında kullanılacak okuyucu.</returns>
+      <param name="type">Okunacak nesnenin türü.</param>
+      <param name="readStream">Okunacak akış.</param>
+      <param name="effectiveEncoding">Okuma sırasında kullanılacak kodlama.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BsonMediaTypeFormatter.CreateJsonWriter(System.Type,System.IO.Stream,System.Text.Encoding)">
+      <summary>
+        <see cref="T:Newtonsoft.Json.JsonWriter" /> almak üzere serileştirme sırasında çağrılır.</summary>
+      <returns>Serileştirme sırasında kullanılacak yazıcı.</returns>
+      <param name="type">Yazılacak nesnenin türü.</param>
+      <param name="writeStream">Yazılacak akış.</param>
+      <param name="effectiveEncoding">Yazma sırasında kullanılacak kodlama.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.BsonMediaTypeFormatter.DefaultMediaType">
+      <summary>Json öğesine ilişkin varsayılan medya türünü (application/bson) alır.</summary>
+      <returns>Json öğesine ilişkin varsayılan medya türü (application/bson).</returns>
+    </member>
+    <member name="P:System.Net.Http.Formatting.BsonMediaTypeFormatter.MaxDepth">
+      <summary>Bu biçimlendiricinin izin verdiği derinlik üst sınırını alır veya ayarlar.</summary>
+      <returns>Bu biçimlendirici tarafından izin verilen maksimum derinlik.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BsonMediaTypeFormatter.ReadFromStream(System.Type,System.IO.Stream,System.Text.Encoding,System.Net.Http.Formatting.IFormatterLogger)">
+      <summary>Belirtilen türdeki bir nesneyi belirtilen akıştan okumak için seri durumundan çıkarma sırasında çağrılır.</summary>
+      <returns>Okunan nesne.</returns>
+      <param name="type">Okunacak nesnenin türü.</param>
+      <param name="readStream">Okunacak akış.</param>
+      <param name="effectiveEncoding">Okuma sırasında kullanılacak kodlama.</param>
+      <param name="formatterLogger">Olayların kaydedileceği günlükçü.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BsonMediaTypeFormatter.ReadFromStreamAsync(System.Type,System.IO.Stream,System.Net.Http.HttpContent,System.Net.Http.Formatting.IFormatterLogger)">
+      <summary>Belirtilen türdeki bir nesneyi belirtilen akıştan okumak için seri durumundan çıkarma sırasında çağrılır.</summary>
+      <returns>Sonucu, okunmuş nesne örneği olacak bir görev.</returns>
+      <param name="type">Okunacak nesnenin türü.</param>
+      <param name="readStream">Okunacak akış.</param>
+      <param name="content">Okunmakta olan içeriğe ilişkin <see cref="T:System.Net.Http.HttpContent" />.</param>
+      <param name="formatterLogger">Olayların kaydedileceği günlükçü.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BsonMediaTypeFormatter.WriteToStream(System.Type,System.Object,System.IO.Stream,System.Text.Encoding)">
+      <summary>Belirtilen türdeki bir nesneyi belirtilen akışa yazmak için serileştirme sırasında çağrılır.</summary>
+      <param name="type">Yazılacak nesnenin türü.</param>
+      <param name="value">Yazılacak nesne.</param>
+      <param name="writeStream">Yazılacak akış.</param>
+      <param name="effectiveEncoding">Yazma sırasında kullanılacak kodlama.</param>
+    </member>
+    <member name="T:System.Net.Http.Formatting.BufferedMediaTypeFormatter">
+      <summary>Zaman uyumsuz biçimlendirici altyapısının en üstünde zaman uyumlu bir biçimlendiriciye izin veren yardımcı sınıfı temsil eder.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BufferedMediaTypeFormatter.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.BufferedMediaTypeFormatter" /> sınıfının yeni bir örneğini başlatır.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BufferedMediaTypeFormatter.#ctor(System.Net.Http.Formatting.BufferedMediaTypeFormatter)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.BufferedMediaTypeFormatter" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="formatter">Ayarları kopyalanacak <see cref="T:System.Net.Http.Formatting.BufferedMediaTypeFormatter" /> örneği.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.BufferedMediaTypeFormatter.BufferSize">
+      <summary>Akışlarla kullanılacak arabelleğin bayt cinsinden önerilen büyüklüğünü alır veya ayarlar.</summary>
+      <returns>Akışlarla kullanılacak arabelleğin bayt cinsinden önerilen büyüklüğü.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BufferedMediaTypeFormatter.ReadFromStream(System.Type,System.IO.Stream,System.Net.Http.HttpContent,System.Net.Http.Formatting.IFormatterLogger)">
+      <summary>Arabelleğe alınan akıştan zaman uyumlu olarak okur.</summary>
+      <returns>Belirtilen <paramref name="type" /> türünde bir nesne.</returns>
+      <param name="type">Serisi kaldırılacak nesnenin türü.</param>
+      <param name="readStream">Okunacak akış.</param>
+      <param name="content">Varsa <see cref="T:System.Net.Http.HttpContent" />.Boş olabilir.</param>
+      <param name="formatterLogger">Olayların günlüğe kaydedileceği <see cref="T:System.Net.Http.Formatting.IFormatterLogger" />.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BufferedMediaTypeFormatter.ReadFromStream(System.Type,System.IO.Stream,System.Net.Http.HttpContent,System.Net.Http.Formatting.IFormatterLogger,System.Threading.CancellationToken)">
+      <summary>Arabelleğe alınan akıştan zaman uyumlu olarak okur.</summary>
+      <returns>Belirtilen <paramref name="type" /> türünde bir nesne.</returns>
+      <param name="type">Serisi kaldırılacak nesnenin türü.</param>
+      <param name="readStream">Okunacak akış.</param>
+      <param name="content">Varsa <see cref="T:System.Net.Http.HttpContent" />.Boş olabilir.</param>
+      <param name="formatterLogger">Olayların günlüğe kaydedileceği <see cref="T:System.Net.Http.Formatting.IFormatterLogger" />.</param>
+      <param name="cancellationToken">İşlemi iptal eden belirteç.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BufferedMediaTypeFormatter.ReadFromStreamAsync(System.Type,System.IO.Stream,System.Net.Http.HttpContent,System.Net.Http.Formatting.IFormatterLogger)">
+      <summary>Arabelleğe alınan akıştan zaman uyumsuz olarak okur.</summary>
+      <returns>Zaman uyumsuz işlemi temsil eden bir görev nesnesi.</returns>
+      <param name="type">Serisi kaldırılacak nesnenin türü.</param>
+      <param name="readStream">Okunacak akış.</param>
+      <param name="content">Varsa <see cref="T:System.Net.Http.HttpContent" />.Boş olabilir.</param>
+      <param name="formatterLogger">Olayların günlüğe kaydedileceği <see cref="T:System.Net.Http.Formatting.IFormatterLogger" />.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BufferedMediaTypeFormatter.ReadFromStreamAsync(System.Type,System.IO.Stream,System.Net.Http.HttpContent,System.Net.Http.Formatting.IFormatterLogger,System.Threading.CancellationToken)">
+      <summary>Arabelleğe alınan akıştan zaman uyumsuz olarak okur.</summary>
+      <returns>Zaman uyumsuz işlemi temsil eden bir görev nesnesi.</returns>
+      <param name="type">Serisi kaldırılacak nesnenin türü.</param>
+      <param name="readStream">Okunacak akış.</param>
+      <param name="content">Varsa <see cref="T:System.Net.Http.HttpContent" />.Boş olabilir.</param>
+      <param name="formatterLogger">Olayların günlüğe kaydedileceği <see cref="T:System.Net.Http.Formatting.IFormatterLogger" />.</param>
+      <param name="cancellationToken">İşlemi iptal eden belirteç.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BufferedMediaTypeFormatter.WriteToStream(System.Type,System.Object,System.IO.Stream,System.Net.Http.HttpContent)">
+      <summary>Arabelleğe alınan akışa zaman uyumlu olarak yazar.</summary>
+      <param name="type">Serileştirilecek nesnenin türü.</param>
+      <param name="value">Yazılacak nesne değeri.Boş olabilir.</param>
+      <param name="writeStream">Yazma yapılacak akış.</param>
+      <param name="content">Varsa <see cref="T:System.Net.Http.HttpContent" />.Boş olabilir.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BufferedMediaTypeFormatter.WriteToStream(System.Type,System.Object,System.IO.Stream,System.Net.Http.HttpContent,System.Threading.CancellationToken)">
+      <summary>Arabelleğe alınan akışa zaman uyumlu olarak yazar.</summary>
+      <param name="type">Serileştirilecek nesnenin türü.</param>
+      <param name="value">Yazılacak nesne değeri.Boş olabilir.</param>
+      <param name="writeStream">Yazma yapılacak akış.</param>
+      <param name="content">Varsa <see cref="T:System.Net.Http.HttpContent" />.Boş olabilir.</param>
+      <param name="cancellationToken">İşlemi iptal eden belirteç.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BufferedMediaTypeFormatter.WriteToStreamAsync(System.Type,System.Object,System.IO.Stream,System.Net.Http.HttpContent,System.Net.TransportContext)">
+      <summary>Arabelleğe alınan akışa zaman uyumsuz olarak yazar.</summary>
+      <returns>Zaman uyumsuz işlemi temsil eden bir görev nesnesi.</returns>
+      <param name="type">Serileştirilecek nesnenin türü.</param>
+      <param name="value">Yazılacak nesne değeri.Boş olabilir.</param>
+      <param name="writeStream">Yazma yapılacak akış.</param>
+      <param name="content">Varsa <see cref="T:System.Net.Http.HttpContent" />.Boş olabilir.</param>
+      <param name="transportContext">Taşıma bağlamı.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BufferedMediaTypeFormatter.WriteToStreamAsync(System.Type,System.Object,System.IO.Stream,System.Net.Http.HttpContent,System.Net.TransportContext,System.Threading.CancellationToken)">
+      <summary>Arabelleğe alınan akışa zaman uyumsuz olarak yazar.</summary>
+      <returns>Zaman uyumsuz işlemi temsil eden bir görev nesnesi.</returns>
+      <param name="type">Serileştirilecek nesnenin türü.</param>
+      <param name="value">Yazılacak nesne değeri.Boş olabilir.</param>
+      <param name="writeStream">Yazma yapılacak akış.</param>
+      <param name="content">Varsa <see cref="T:System.Net.Http.HttpContent" />.Boş olabilir.</param>
+      <param name="transportContext">Taşıma bağlamı.</param>
+      <param name="cancellationToken">İşlemi iptal eden belirteç.</param>
+    </member>
+    <member name="T:System.Net.Http.Formatting.ContentNegotiationResult">
+      <summary> &lt;Bkz. cref="M:System.Net.Http.Formatting.IContentNegotiator.Negotiate(System.Type,System.Net.Http.HttpRequestMessage,System.Collections.Generic.IEnumerable{System.Net.Http.Formatting.MediaTypeFormatter})" /&gt; kullanılarak gerçekleştirilen içerik anlaşmasının sonucunu temsil eder</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.ContentNegotiationResult.#ctor(System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue)">
+      <summary> İçerik anlaşması sonuç nesnesini oluşturur. </summary>
+      <param name="formatter">Biçimlendirici.</param>
+      <param name="mediaType">Tercih edilen medya türü.Boş olabilir.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.ContentNegotiationResult.Formatter">
+      <summary> Serileştirme için seçilen biçimlendirici. </summary>
+    </member>
+    <member name="P:System.Net.Http.Formatting.ContentNegotiationResult.MediaType">
+      <summary>Serileştirme için seçilen biçimlendirici ile ilişkili medya türü.Boş olabilir.</summary>
+    </member>
+    <member name="T:System.Net.Http.Formatting.DefaultContentNegotiator">
+      <summary> Bir <see cref="T:System.Net.Http.HttpRequestMessage" /> veya <see cref="T:System.Net.Http.HttpResponseMessage" /> için <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> seçmek amacıyla kullanılan <see cref="T:System.Net.Http.Formatting.IContentNegotiator" /> öğesinin varsayılan uygulaması. </summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DefaultContentNegotiator.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.DefaultContentNegotiator" /> sınıfının yeni bir örneğini başlatır.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DefaultContentNegotiator.#ctor(System.Boolean)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.DefaultContentNegotiator" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="excludeMatchOnTypeOnly">Yalnızca nesne türü üzerinden eşlenen biçimlendiricileri dışlamak için true; eklemek için false.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DefaultContentNegotiator.ComputeFormatterMatches(System.Type,System.Net.Http.HttpRequestMessage,System.Collections.Generic.IEnumerable{System.Net.Http.Formatting.MediaTypeFormatter})">
+      <summary>Her bir biçimlendiricinin bir HTTP isteğiyle ne kadar iyi eşleştiğini belirler.</summary>
+      <returns>Tüm eşleşmeleri temsil eden bir <see cref="T:System.Net.Http.Formatting.MediaTypeFormatterMatch" /> nesneleri topluluğunu döndürür.</returns>
+      <param name="type">Serileştirilecek tür.</param>
+      <param name="request">İstek.</param>
+      <param name="formatters">Aralarından seçim yapılacak olan <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> nesne kümeleri.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.DefaultContentNegotiator.ExcludeMatchOnTypeOnly">
+      <summary>Yalnızca nesne türü üzerinden eşlenen biçimlendiricileri dışlamak için true; eklemek için false.</summary>
+      <returns>
+        <see cref="T:System.Boolean" /> öğesi döndürür.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DefaultContentNegotiator.MatchAcceptHeader(System.Collections.Generic.IEnumerable{System.Net.Http.Headers.MediaTypeWithQualityHeaderValue},System.Net.Http.Formatting.MediaTypeFormatter)">
+      <summary>Bir Accept üstbilgi alanı kümesini biçimlendiricinin desteklediği medya türleriyle eşleştirir.</summary>
+      <returns>Eşleşmenin kalitesini ya da eşleşme yoksa null değerini gösteren bir <see cref="T:System.Net.Http.Formatting.MediaTypeFormatterMatch" /> nesnesi döndürür.</returns>
+      <param name="sortedAcceptValues">Kalite faktörü azalan şekilde sıralanmış Accept üstbilgi değerleri listesi. <see cref="M:System.Net.Http.Formatting.DefaultContentNegotiator.SortStringWithQualityHeaderValuesByQFactor(System.Collections.Generic.ICollection{System.Net.Http.Headers.StringWithQualityHeaderValue})" /> yöntemini çağırarak bu listeyi oluşturabilirsiniz.</param>
+      <param name="formatter">Eşlenecek biçimlendirici.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DefaultContentNegotiator.MatchMediaTypeMapping(System.Net.Http.HttpRequestMessage,System.Net.Http.Formatting.MediaTypeFormatter)">
+      <summary>Bir isteği, medya türü biçimlendiricisindeki <see cref="T:System.Net.Http.Formatting.MediaTypeMapping" /> nesneleriyle eşleştirir.</summary>
+      <returns>Eşleşmenin kalitesini ya da eşleşme yoksa null değerini gösteren bir <see cref="T:System.Net.Http.Formatting.MediaTypeFormatterMatch" /> nesnesi döndürür.</returns>
+      <param name="request">Eşleştirilecek istek.</param>
+      <param name="formatter">Medya türü biçimlendiricisi.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DefaultContentNegotiator.MatchRequestMediaType(System.Net.Http.HttpRequestMessage,System.Net.Http.Formatting.MediaTypeFormatter)">
+      <summary>İsteğin içerik türünü biçimlendiricinin desteklediği medya türleriyle eşleştirir.</summary>
+      <returns>Eşleşmenin kalitesini ya da eşleşme yoksa null değerini gösteren bir <see cref="T:System.Net.Http.Formatting.MediaTypeFormatterMatch" /> nesnesi döndürür.</returns>
+      <param name="request">Eşleştirilecek istek.</param>
+      <param name="formatter">Eşlenecek biçimlendirici.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DefaultContentNegotiator.MatchType(System.Type,System.Net.Http.Formatting.MediaTypeFormatter)">
+      <summary>Biçimlendiricinin ilk desteklenen medya türünü seçer.</summary>
+      <returns>MatchOnCanWriteType öğesine ayarlanmış <see cref="P:System.Net.Http.Formatting.MediaTypeFormatterMatch.Ranking" /> ile eşleşen bir <see cref="T:System.Net.Http.Formatting.MediaTypeFormatterMatch" /> öğesini ya da eşleşme yoksa null değerini döndürür. Eşleştirmenin kalitesini belirten bir <see cref="T:System.Net.Http.Formatting.MediaTypeFormatterMatch" /> veya eşleştirme yoksa null.</returns>
+      <param name="type">Eşlenecek tür.</param>
+      <param name="formatter">Eşlenecek biçimlendirici.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DefaultContentNegotiator.Negotiate(System.Type,System.Net.Http.HttpRequestMessage,System.Collections.Generic.IEnumerable{System.Net.Http.Formatting.MediaTypeFormatter})">
+      <summary>Belirtilen <paramref name="type" /> bir nesneyi serileştirebilen belirli <paramref name="request" /> ile ilgili <paramref name="formatters" /> öğelerinden geçen en uygun <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> öğesini seçerek içerik anlaşması gerçekleştirir.</summary>
+      <returns>En uygun <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> örneğini içeren görüşmenin sonucu veya uygun bir biçimlendirici yoksa null.</returns>
+      <param name="type">Serileştirilecek tür.</param>
+      <param name="request">İstek.</param>
+      <param name="formatters">Aralarından seçim yapılacak olan <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> nesne kümeleri.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DefaultContentNegotiator.SelectResponseCharacterEncoding(System.Net.Http.HttpRequestMessage,System.Net.Http.Formatting.MediaTypeFormatter)">
+      <summary>Yanıt yazmak için en iyi karakter kodlamasını belirler.</summary>
+      <returns>En iyi eşleşme olan <see cref="T:System.Text.Encoding" /> öğesini döndürür.</returns>
+      <param name="request">İstek.</param>
+      <param name="formatter">Seçilen medya biçimlendiricisi.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DefaultContentNegotiator.SelectResponseMediaTypeFormatter(System.Collections.Generic.ICollection{System.Net.Http.Formatting.MediaTypeFormatterMatch})">
+      <summary>Bulunan aday eşleşmeler arasından en iyi eşleşmeyi seçin.</summary>
+      <returns>En iyi eşleşmeyi temsil eden <see cref="T:System.Net.Http.Formatting.MediaTypeFormatterMatch" /> nesnesini döndürür. </returns>
+      <param name="matches">Eşleşme topluluğu.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DefaultContentNegotiator.ShouldMatchOnType(System.Collections.Generic.IEnumerable{System.Net.Http.Headers.MediaTypeWithQualityHeaderValue})">
+      <summary> Tür üzerinden eşleşip eşleşmeyeceğini belirleyin. Bunun yapılması, istekteki herhangi bir öğeyle eşleşme olmaması durumunda bir 406 yanıtı oluşturmayı veya varsayılan medya türü biçimlendiricisini kullanmayı belirler. ExcludeMatchOnTypeOnly değeri true ise, kabul etme üstbilgisi olmaması durumunda tür üzerinden eşleştirilmez. </summary>
+      <returns>0,0'dan büyük kalite faktörüne sahip ExcludeMatchOnTypeOnly ve kabul etme üstbilgileri mevcut değilse true.</returns>
+      <param name="sortedAcceptValues">Eşleştirilecek sıralı kabul etme üstbilgi değerleri.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DefaultContentNegotiator.SortMediaTypeWithQualityHeaderValuesByQFactor(System.Collections.Generic.ICollection{System.Net.Http.Headers.MediaTypeWithQualityHeaderValue})">
+      <summary>Accept üstbilgi değerlerini kalite faktörü azalan şekilde sıralar.</summary>
+      <returns>MediaTypeWithQualityHeaderValue nesnelerinin sıralanmış listesini döndürür.</returns>
+      <param name="headerValues">Üstbilgi alanlarını temsil eden bir StringWithQualityHeaderValue nesneleri topluluğu.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DefaultContentNegotiator.SortStringWithQualityHeaderValuesByQFactor(System.Collections.Generic.ICollection{System.Net.Http.Headers.StringWithQualityHeaderValue})">
+      <summary>Accept-Charset, Accept-Encoding, Accept-Language listesini ya da ilgili üstbilgi değerlerini kalite faktörü azalan şekilde sıralar.</summary>
+      <returns>StringWithQualityHeaderValue nesnelerinin sıralanmış listesini döndürür.</returns>
+      <param name="headerValues">Üstbilgi alanlarını temsil eden bir StringWithQualityHeaderValue nesneleri topluluğu.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DefaultContentNegotiator.UpdateBestMatch(System.Net.Http.Formatting.MediaTypeFormatterMatch,System.Net.Http.Formatting.MediaTypeFormatterMatch)">
+      <summary>Bir eşleşmenin geçerli eşleşmeden daha iyi olup olmadığını değerlendirir.</summary>
+      <returns>Hangi <see cref="T:System.Net.Http.Formatting.MediaTypeFormatterMatch" /> nesnesinin daha iyi bir eşleşme olduğunu döndürür.</returns>
+      <param name="current">Geçerli eşleşme.</param>
+      <param name="potentialReplacement">Geçerli eşleşme ile değerlendirilecek eşleşme.</param>
+    </member>
+    <member name="T:System.Net.Http.Formatting.DelegatingEnumerable`1">
+      <summary> &lt;see cref="T:System.Collections.Generic.IEnumerable`1" /&gt; türlerini, sağlam bir uygulama ile atayarak serileştirmek için yardımcı sınıfı."/&amp;gt;. </summary>
+      <typeparam name="T">Proxy'e uygulanan arabirim.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DelegatingEnumerable`1.#ctor">
+      <summary>Bir DelegatingEnumerable başlatır.Bu oluşturucu, <see cref="T:System.Runtime.Serialization.DataContractSerializer" /> öğesinin çalışması için gereklidir.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DelegatingEnumerable`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+      <summary>Bir &lt;see cref="T:System.Collections.Generic.IEnumerable`1" /&gt; ile bir DelegatingEnumerable başlatır.Bu, <see cref="T:System.Xml.Serialization.XmlSerializer" /> için proxy &lt;see cref="T:System.Collections.Generic.IEnumerable`1" /&gt; arabirimlerine bir yardımcı sınıfıdır.</summary>
+      <param name="source">Numaralandırıcının alınacağı &lt;see cref="T:System.Collections.Generic.IEnumerable`1" /&gt; örneği.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DelegatingEnumerable`1.Add(System.Object)">
+      <summary>Bu yöntem uygulanmadı ancak serileştirmenin çalışması için gereken yöntemdir.Kullanmayın.</summary>
+      <param name="item">Eklenecek öğe.Kullanılmıyor.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DelegatingEnumerable`1.GetEnumerator">
+      <summary> İlişkili &lt;see cref="T:System.Collections.Generic.IEnumerable`1" /&gt; öğesinin numaralandırıcısını alır. </summary>
+      <returns>&lt;see cref="T:System.Collections.Generic.IEnumerable`1" /&gt; kaynağının numaralandırıcısı.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DelegatingEnumerable`1.System#Collections#IEnumerable#GetEnumerator">
+      <summary> İlişkili &lt;see cref="T:System.Collections.Generic.IEnumerable`1" /&gt; öğesinin numaralandırıcısını alır. </summary>
+      <returns>&lt;see cref="T:System.Collections.Generic.IEnumerable`1" /&gt; kaynağının numaralandırıcısı.</returns>
+    </member>
+    <member name="T:System.Net.Http.Formatting.FormDataCollection">
+      <summary>Form verileri topluluğunu gösterir.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.FormDataCollection.#ctor(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+      <summary>Yeni bir <see cref="T:System.Net.Http.Formatting.FormDataCollection" /> sınıfı örneğini başlatır.</summary>
+      <param name="pairs">Eşler.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.FormDataCollection.#ctor(System.String)">
+      <summary>Yeni bir <see cref="T:System.Net.Http.Formatting.FormDataCollection" /> sınıfı örneğini başlatır.</summary>
+      <param name="query">Sorgu.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.FormDataCollection.#ctor(System.Uri)">
+      <summary>Yeni bir <see cref="T:System.Net.Http.Formatting.FormDataCollection" /> sınıfı örneğini başlatır.</summary>
+      <param name="uri">URI</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.FormDataCollection.Get(System.String)">
+      <summary>Form verileri topluluğunu alır.</summary>
+      <returns>Form verileri topluluğu.</returns>
+      <param name="key">Anahtar.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.FormDataCollection.GetEnumerator">
+      <summary>Topluluk içinde tekrarlanan bir sayıyı alır.</summary>
+      <returns>Topluluk içinde tekrarlanan sayı.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.FormDataCollection.GetValues(System.String)">
+      <summary>Form verileri topluluğunun değerlerini alır.</summary>
+      <returns>Form verileri topluluğunun değerleri.</returns>
+      <param name="key">Anahtar.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.FormDataCollection.Item(System.String)">
+      <summary>Verilen anahtarla ilişkili değerler alır.Birden çok değer varsa bunlar bitiştirilir.</summary>
+      <returns>Verilen anahtarla ilişkili değerler.Birden çok değer varsa bunlar bitiştirilir.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.FormDataCollection.ReadAsNameValueCollection">
+      <summary>Form verileri topluluğunu bir ad değeri topluluğu olarak okur.</summary>
+      <returns>Bir ad değeri topluluğu olarak form verileri topluluğu.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.FormDataCollection.System#Collections#IEnumerable#GetEnumerator">
+      <summary>Topluluk içinde tekrarlanan bir sayıyı alır.</summary>
+      <returns>Topluluk içinde tekrarlanan sayı.</returns>
+    </member>
+    <member name="T:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter">
+      <summary>application/x-www-form-urlencoded olarak da bilinen HTML biçimli URL sonlu verileri işlemek için <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> sınıfı.  </summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter" /> sınıfının yeni bir örneğini başlatır.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter.#ctor(System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="formatter">Ayarları kopyalanacak <see cref="T:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter" /> örneği.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter.CanReadType(System.Type)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter" /> öğesinin belirtilen türe ait bir nesnenin serisini kaldırıp kaldıramayacağını sorgular.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter" /> öğesi türün serisini kaldırabiliyorsa true; kaldıramıyorsa, false.</returns>
+      <param name="type">Serisi kaldırılacak tür.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter.CanWriteType(System.Type)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter" /> öğesinin belirtilen türe ait bir nesneyi serileştirip serileştiremeyeceğini sorgular.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter" /> öğesi türü serileştirebiliyorsa true; serileştiremiyorsa, false.</returns>
+      <param name="type">Serileştirilecek tür.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter.DefaultMediaType">
+      <summary>HTML formu URL kodlanmış verileri, yani application/x-www-form-urlencoded için varsayılan medya türünü alır.</summary>
+      <returns>HTML formu URL kodlanmış verileri için varsayılan medya türü</returns>
+    </member>
+    <member name="P:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter.MaxDepth">
+      <summary>Bu biçimlendiricinin izin verdiği derinlik üst sınırını alır veya ayarlar.</summary>
+      <returns>Maksimum derinlik.</returns>
+    </member>
+    <member name="P:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter.ReadBufferSize">
+      <summary>Gelen akış okunurken arabelleğin boyutunu alır veya ayarlar.</summary>
+      <returns>Arabellek boyutu.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter.ReadFromStreamAsync(System.Type,System.IO.Stream,System.Net.Http.HttpContent,System.Net.Http.Formatting.IFormatterLogger)">
+      <summary> Zaman uyumsuz olarak belirtilen türe ait bir nesnenin serisini kaldırır.</summary>
+      <returns>Sonucu, okunmuş nesne örneği olacak bir <see cref="T:System.Threading.Tasks.Task" />.</returns>
+      <param name="type">Serisi kaldırılacak nesnenin türü.</param>
+      <param name="readStream">Okunacak <see cref="T:System.IO.Stream" />.</param>
+      <param name="content">Okunmakta olan içeriğe ilişkin <see cref="T:System.Net.Http.HttpContent" />.</param>
+      <param name="formatterLogger">Olayların günlüğe kaydedileceği <see cref="T:System.Net.Http.Formatting.IFormatterLogger" />.</param>
+    </member>
+    <member name="T:System.Net.Http.Formatting.IContentNegotiator">
+      <summary>İçerik anlaşmasını gerçekleştirir.Bu, istekteki üstbilgi değerlerine uygun olarak bir yanıt yazıcı (biçimlendirici) seçme işlemidir.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.IContentNegotiator.Negotiate(System.Type,System.Net.Http.HttpRequestMessage,System.Collections.Generic.IEnumerable{System.Net.Http.Formatting.MediaTypeFormatter})">
+      <summary> Belirtilen türden bir nesneyi serileştirebilen belirli isteğe ilişkin biçimlendiricilerden geçen en uygun <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> biçimlendiricileri seçerek içerik anlaşması gerçekleştirir. </summary>
+      <returns>En uygun <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> örneğini içeren anlaşmanın sonucu veya uygun bir biçimlendirici yoksa boş.</returns>
+      <param name="type">Serileştirilecek tür.</param>
+      <param name="request">Anlaşma gerçekleştirmek için kullanılan üstbilgi değerlerini içeren istek iletisi.</param>
+      <param name="formatters">Aralarından seçim yapılacak olan <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> nesne kümeleri.</param>
+    </member>
+    <member name="T:System.Net.Http.Formatting.IFormatterLogger">
+      <summary>Biçimlendiricinin okuma sırasında günlüğe hataları kaydetmek için kullanabileceği bir geri çağırma arabirimi belirtir.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.IFormatterLogger.LogError(System.String,System.Exception)">
+      <summary>Günlüğe bir hata kaydeder.</summary>
+      <param name="errorPath">Hatanın kaydedildiği üyenin yolu.</param>
+      <param name="exception">Hata iletisi.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.IFormatterLogger.LogError(System.String,System.String)">
+      <summary>Günlüğe bir hata kaydeder.</summary>
+      <param name="errorPath">Hatanın kaydedildiği üyenin yolu.</param>
+      <param name="errorMessage">Günlüğe kaydedilecek hata iletisi.</param>
+    </member>
+    <member name="T:System.Net.Http.Formatting.IRequiredMemberSelector">
+      <summary>Belirtilen bir üyenin seri durumundan çıkarma işleminde gerekli olup olmadığını belirleyen yöntemi tanımlar.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.IRequiredMemberSelector.IsRequiredMember(System.Reflection.MemberInfo)">
+      <summary>Seri kaldırma işleminde belirtilen bir üyenin gerekip gerekmediğini belirler.</summary>
+      <returns>
+        <paramref name="member" /> değeri gerekli üye olarak işleme tabi tutulacaksa true, değilse false.</returns>
+      <param name="member">Serisi kaldırılacak <see cref="T:System.Reflection.MemberInfo" /> öğesi.</param>
+    </member>
+    <member name="T:System.Net.Http.Formatting.JsonContractResolver">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.JsonMediaTypeFormatter" /> tarafından kullanılan varsayılan  <see cref="T:Newtonsoft.Json.Serialization.IContractResolver" /> öğesini temsil eder.Gerekli üyeleri seçmek için biçimlendiricinin <see cref="T:System.Net.Http.Formatting.IRequiredMemberSelector" /> öğesini kullanır ve <see cref="T:System.SerializableAttribute" /> tür ek açıklamasını tanır.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.JsonContractResolver.#ctor(System.Net.Http.Formatting.MediaTypeFormatter)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.JsonContractResolver" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="formatter">Gerekli üyeleri çözümlemek için kullanılan biçimlendirici.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.JsonContractResolver.CreateProperty(System.Reflection.MemberInfo,Newtonsoft.Json.MemberSerialization)">
+      <summary>Belirtilen parametreleri kullanarak belirtilen sınıfta bir özellik oluşturur.</summary>
+      <returns>Belirtilen parametreleri kullanarak belirtilen sınıfta oluşturulacak <see cref="T:Newtonsoft.Json.Serialization.JsonProperty" />.</returns>
+      <param name="member">Üye bilgisi.</param>
+      <param name="memberSerialization">Üye serileştirme.</param>
+    </member>
+    <member name="T:System.Net.Http.Formatting.JsonMediaTypeFormatter">
+      <summary>JSON işlemek için <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> sınıfını gösterir. </summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.JsonMediaTypeFormatter.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.JsonMediaTypeFormatter" /> sınıfının yeni bir örneğini başlatır. </summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.JsonMediaTypeFormatter.#ctor(System.Net.Http.Formatting.JsonMediaTypeFormatter)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.JsonMediaTypeFormatter" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="formatter">Ayarları kopyalanacak <see cref="T:System.Net.Http.Formatting.JsonMediaTypeFormatter" /> örneği.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.JsonMediaTypeFormatter.CanReadType(System.Type)">
+      <summary>Bu <see cref="T:System.Net.Http.Formatting.JsonMediaTypeFormatter" /> öğesinin belirtilen <paramref name="type" /> türünde nesneleri okuyup okuyamayacağını belirtir.</summary>
+      <returns>Bu <paramref name="type" /> türündeki nesneler okunabilirse true, aksi halde false şeklindedir.</returns>
+      <param name="type">Okunacak nesnenin türü.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.JsonMediaTypeFormatter.CanWriteType(System.Type)">
+      <summary>Bu <see cref="T:System.Net.Http.Formatting.JsonMediaTypeFormatter" /> öğesinin belirtilen <paramref name="type" /> türünde nesneleri yazıp yazamayacağını belirtir.</summary>
+      <returns>Bu <paramref name="type" /> türündeki nesneler yazılabilirse true, aksi halde false şeklindedir.</returns>
+      <param name="type">Yazılacak nesnenin türü.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.JsonMediaTypeFormatter.CreateDataContractSerializer(System.Type)">
+      <summary>
+        <see cref="T:System.Runtime.Serialization.Json.DataContractJsonSerializer" /> almak üzere seri durumundan çıkarma sırasında çağrılır.</summary>
+      <returns>Serileştirme için kullanılan nesne.</returns>
+      <param name="type">Serileştirilecek veya seri durumdan çıkarılacak nesne türü.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.JsonMediaTypeFormatter.CreateJsonReader(System.Type,System.IO.Stream,System.Text.Encoding)">
+      <summary>
+        <see cref="T:Newtonsoft.Json.JsonReader" /> almak üzere seri durumundan çıkarma sırasında çağrılır.</summary>
+      <returns>Seri durumundan çıkarma sırasında kullanılacak okuyucu.</returns>
+      <param name="type">Okunacak nesnenin türü.</param>
+      <param name="readStream">Okunacak akış.</param>
+      <param name="effectiveEncoding">Okuma sırasında kullanılacak kodlama.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.JsonMediaTypeFormatter.CreateJsonWriter(System.Type,System.IO.Stream,System.Text.Encoding)">
+      <summary>
+        <see cref="T:Newtonsoft.Json.JsonWriter" /> almak üzere serileştirme sırasında çağrılır.</summary>
+      <returns>Serileştirme sırasında kullanılacak yazıcı.</returns>
+      <param name="type">Yazılacak nesnenin türü.</param>
+      <param name="writeStream">Yazılacak akış.</param>
+      <param name="effectiveEncoding">Yazma sırasında kullanılacak kodlama.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.JsonMediaTypeFormatter.DefaultMediaType">
+      <summary>JSON için varsayılan "application/json" adlı ortam türünü alır.</summary>
+      <returns>JSON için <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" />.</returns>
+    </member>
+    <member name="P:System.Net.Http.Formatting.JsonMediaTypeFormatter.Indent">
+      <summary> Veriler yazılırken öğelerin girintilenip girintilenmeyeceğini belirten bir değer alır veya ayarlar.  </summary>
+      <returns>veriler yazılırken hiç girintili öğe yoksa true, aksi halde false şeklindedir.</returns>
+    </member>
+    <member name="P:System.Net.Http.Formatting.JsonMediaTypeFormatter.MaxDepth">
+      <summary>Bu biçimlendiricinin izin verdiği derinlik üst sınırını alır veya ayarlar.</summary>
+      <returns>Bu biçimlendirici tarafından izin verilen maksimum derinlik.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.JsonMediaTypeFormatter.ReadFromStream(System.Type,System.IO.Stream,System.Text.Encoding,System.Net.Http.Formatting.IFormatterLogger)">
+      <summary>Belirtilen türdeki bir nesneyi belirtilen akıştan okumak için seri durumundan çıkarma sırasında çağrılır.</summary>
+      <returns>Okunan nesne.</returns>
+      <param name="type">Okunacak nesnenin türü.</param>
+      <param name="readStream">Okunacak akış.</param>
+      <param name="effectiveEncoding">Okuma sırasında kullanılacak kodlama.</param>
+      <param name="formatterLogger">Olayların kaydedileceği günlükçü.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.JsonMediaTypeFormatter.UseDataContractJsonSerializer">
+      <summary> Varsayılan olarak <see cref="T:System.Runtime.Serialization.Json.DataContractJsonSerializer" /> kullanılıp kullanılmayacağını gösteren bir değer alır veya ayarlar. </summary>
+      <returns>Varsayılan olarak <see cref="T:System.Runtime.Serialization.Json.DataContractJsonSerializer" /> ise true, aksi halde false şeklindedir.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.JsonMediaTypeFormatter.WriteToStream(System.Type,System.Object,System.IO.Stream,System.Text.Encoding)">
+      <summary>Belirtilen türdeki bir nesneyi belirtilen akışa yazmak için serileştirme sırasında çağrılır.</summary>
+      <param name="type">Yazılacak nesnenin türü.</param>
+      <param name="value">Yazılacak nesne.</param>
+      <param name="writeStream">Yazılacak akış.</param>
+      <param name="effectiveEncoding">Yazma sırasında kullanılacak kodlama.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.JsonMediaTypeFormatter.WriteToStreamAsync(System.Type,System.Object,System.IO.Stream,System.Net.Http.HttpContent,System.Net.TransportContext,System.Threading.CancellationToken)">
+      <summary>Belirtilen türdeki bir nesneyi belirtilen akışa yazmak için serileştirme sırasında çağrılır.</summary>
+      <returns>
+        <see cref="T:System.Threading.Tasks.Task" /> döndürür.</returns>
+      <param name="type">Yazılacak nesnenin türü.</param>
+      <param name="value">Yazılacak nesne.</param>
+      <param name="writeStream">Yazılacak akış.</param>
+      <param name="content">Yazılmakta olan içeriğe ilişkin <see cref="T:System.Net.Http.HttpContent" />.</param>
+      <param name="transportContext">Taşıma bağlamı.</param>
+      <param name="cancellationToken">İptalleri izleyecek belirteç.</param>
+    </member>
+    <member name="T:System.Net.Http.Formatting.MediaTypeFormatter">
+      <summary> Türü kesin belirlenmiş nesnelerin <see cref="T:System.Net.Http.ObjectContent" /> kullanılarak serileştirilmesi ve serisinin kaldırılması işlemini işlemek üzere taban sınıfı. </summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatter.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> sınıfının yeni bir örneğini başlatır.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatter.#ctor(System.Net.Http.Formatting.MediaTypeFormatter)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="formatter">Ayarları kopyalanacak <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> örneği.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatter.CanReadType(System.Type)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> öğesinin belirtilen türe ait bir nesnenin serisini kaldırıp kaldıramayacağını sorgular.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> öğesi türün serisini kaldırabiliyorsa true; kaldıramıyorsa, false.</returns>
+      <param name="type">Serisi kaldırılacak tür.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatter.CanWriteType(System.Type)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> öğesinin belirtilen türe ait bir nesneyi serileştirip serileştiremeyeceğini sorgular.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> öğesi türü serileştirebiliyorsa true ; serileştiremiyorsa, false.</returns>
+      <param name="type">Serileştirilecek tür.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatter.GetDefaultValueForType(System.Type)">
+      <summary>Seçilen tür için varsayılan değeri getirir.</summary>
+      <returns>Varsayılan değer.</returns>
+      <param name="type">Varsayılan değeri alınacak tür.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatter.GetPerRequestFormatterInstance(System.Type,System.Net.Http.HttpRequestMessage,System.Net.Http.Headers.MediaTypeHeaderValue)">
+      <summary>Verilen parametrelere bir yanıt biçimlendirebilen <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> öğesinin özelleştirilmiş bir örneğini döndürür.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> döndürür.</returns>
+      <param name="type">Biçimlendirilecek tür.</param>
+      <param name="request">İstek.</param>
+      <param name="mediaType">Medya türü.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.MediaTypeFormatter.MaxHttpCollectionKeys">
+      <summary>Şurada saklanan maksimum anahtar sayısını alır veya ayarlar: <see cref="System.Collections.Specialized.NameValueCollection" />.</summary>
+      <returns>Maksimum anahtar sayısı.</returns>
+    </member>
+    <member name="P:System.Net.Http.Formatting.MediaTypeFormatter.MediaTypeMappings">
+      <summary>HTTP isteklerini medya türleriyle eşleştiren <see cref="T:System.Net.Http.Formatting.MediaTypeMapping" /> nesnelerinin değişebilir topluluğunu alır.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Formatting.MediaTypeMapping" /> topluluğu.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatter.ReadFromStreamAsync(System.Type,System.IO.Stream,System.Net.Http.HttpContent,System.Net.Http.Formatting.IFormatterLogger)">
+      <summary>Zaman uyumsuz olarak belirtilen türe ait bir nesnenin serisini kaldırır.</summary>
+      <returns>Sonucu, belirli türde bir nesne olacak bir <see cref="T:System.Threading.Tasks.Task" />.</returns>
+      <param name="type">Serisi kaldırılacak nesnenin türü.</param>
+      <param name="readStream">Okunacak <see cref="T:System.IO.Stream" />.</param>
+      <param name="content">Varsa <see cref="T:System.Net.Http.HttpContent" />.Boş olabilir.</param>
+      <param name="formatterLogger">Olayların günlüğe kaydedileceği <see cref="T:System.Net.Http.Formatting.IFormatterLogger" />.</param>
+      <exception cref="T:System.NotSupportedException">Türetilen türlerin okumayı desteklemesi gerekir.</exception>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatter.ReadFromStreamAsync(System.Type,System.IO.Stream,System.Net.Http.HttpContent,System.Net.Http.Formatting.IFormatterLogger,System.Threading.CancellationToken)">
+      <summary>Zaman uyumsuz olarak belirtilen türe ait bir nesnenin serisini kaldırır.</summary>
+      <returns>Sonucu, belirli türde bir nesne olacak bir <see cref="T:System.Threading.Tasks.Task" />.</returns>
+      <param name="type">Serisi kaldırılacak nesnenin türü.</param>
+      <param name="readStream">Okunacak <see cref="T:System.IO.Stream" />.</param>
+      <param name="content">Varsa <see cref="T:System.Net.Http.HttpContent" />.Boş olabilir.</param>
+      <param name="formatterLogger">Olayların günlüğe kaydedileceği <see cref="T:System.Net.Http.Formatting.IFormatterLogger" />.</param>
+      <param name="cancellationToken">İşlemi iptal eden belirteç.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.MediaTypeFormatter.RequiredMemberSelector">
+      <summary>Gerekli üyeleri belirlemek için kullanılan <see cref="T:System.Net.Http.Formatting.IRequiredMemberSelector" /> öğesini alır veya ayarlar.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Formatting.IRequiredMemberSelector" /> örneği.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatter.SelectCharacterEncoding(System.Net.Http.Headers.HttpContentHeaders)">
+      <summary>Verilen bir içerik üstbilgileri kümesinde bir HTTP varlık gövdesi okuma veya yazmayla ilişkili en iyi karakter kodlamasını belirler.</summary>
+      <returns>En iyi eşleşme olan kodlama.</returns>
+      <param name="contentHeaders">İçerik üstbilgileri.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatter.SetDefaultContentHeaders(System.Type,System.Net.Http.Headers.HttpContentHeaders,System.Net.Http.Headers.MediaTypeHeaderValue)">
+      <summary>Bu biçimlendirici kullanılarak biçimlendirilecek içeriğe ilişkin varsayılan üstbilgileri ayarlar.Bu yöntem, <see cref="T:System.Net.Http.ObjectContent" /> oluşturucusundan çağrılır.Bu uygulama, Content-Type üstbilgisini boş değilse mediaType değerine ayarlar.Bu değer boş ise Content-Type değerini bu biçimlendiricinin varsayılan medya türüne ayarlar.Content-Type bir karakter kümesi belirtmediği takdirde bunu, bu biçimlendiricinin yapılandırılan <see cref="T:System.Text.Encoding" /> öğesini kullanarak ayarlar.</summary>
+      <param name="type">Serileştirilmekte olan nesnenin türü.Bkz. <see cref="T:System.Net.Http.ObjectContent" />.</param>
+      <param name="headers">Yapılandırılması gereken içerik üstbilgileri.</param>
+      <param name="mediaType">Yetkili medya türü.Boş olabilir.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.MediaTypeFormatter.SupportedEncodings">
+      <summary>Bu <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> örneği tarafından desteklenen karakter kodlaması değişebilir topluluğunu alır.</summary>
+      <returns>
+        <see cref="T:System.Text.Encoding" /> nesneleri topluluğu.</returns>
+    </member>
+    <member name="P:System.Net.Http.Formatting.MediaTypeFormatter.SupportedMediaTypes">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> öğesi tarafından desteklenen medya türleri değişebilir topluluğunu alır.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" /> nesneleri topluluğu.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatter.WriteToStreamAsync(System.Type,System.Object,System.IO.Stream,System.Net.Http.HttpContent,System.Net.TransportContext)">
+      <summary>Belirtilen türde bir nesneyi zaman uyumsuz olarak yazar.</summary>
+      <returns>Yazma işlemini gerçekleştirecek bir <see cref="T:System.Threading.Tasks.Task" />.</returns>
+      <param name="type">Yazılacak nesnenin türü.</param>
+      <param name="value">Yazılacak nesne değeri.Boş olabilir.</param>
+      <param name="writeStream">
+        <see cref="T:System.IO.Stream" /> öğesine yazılacak.</param>
+      <param name="content">Varsa <see cref="T:System.Net.Http.HttpContent" />.Boş olabilir.</param>
+      <param name="transportContext">Varsa <see cref="T:System.Net.TransportContext" />.Boş olabilir.</param>
+      <exception cref="T:System.NotSupportedException">Türetilen türlerin yazmayı desteklemesi gerekir.</exception>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatter.WriteToStreamAsync(System.Type,System.Object,System.IO.Stream,System.Net.Http.HttpContent,System.Net.TransportContext,System.Threading.CancellationToken)">
+      <summary>Belirtilen türde bir nesneyi zaman uyumsuz olarak yazar.</summary>
+      <returns>Yazma işlemini gerçekleştirecek bir <see cref="T:System.Threading.Tasks.Task" />.</returns>
+      <param name="type">Yazılacak nesnenin türü.</param>
+      <param name="value">Yazılacak nesne değeri.Boş olabilir.</param>
+      <param name="writeStream">
+        <see cref="T:System.IO.Stream" /> öğesine yazılacak.</param>
+      <param name="content">Varsa <see cref="T:System.Net.Http.HttpContent" />.Boş olabilir.</param>
+      <param name="transportContext">Varsa <see cref="T:System.Net.TransportContext" />.Boş olabilir.</param>
+      <param name="cancellationToken">İşlemi iptal eden belirteç.</param>
+      <exception cref="T:System.NotSupportedException">Türetilen türlerin yazmayı desteklemesi gerekir.</exception>
+    </member>
+    <member name="T:System.Net.Http.Formatting.MediaTypeFormatterCollection">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> örneklerini içeren koleksiyon sınıfı. </summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterCollection.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.MediaTypeFormatterCollection" /> sınıfının yeni bir örneğini başlatır.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterCollection.#ctor(System.Collections.Generic.IEnumerable{System.Net.Http.Formatting.MediaTypeFormatter})">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.MediaTypeFormatterCollection" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="formatters">Koleksiyona koymak için bir <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> örnekleri koleksiyonu.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterCollection.AddRange(System.Collections.Generic.IEnumerable{System.Net.Http.Formatting.MediaTypeFormatter})">
+      <summary>Belirtilen koleksiyonun öğelerini <see cref="T:System.Net.Http.Formatting.MediaTypeFormatterCollection" /> öğesinin sonuna ekler.</summary>
+      <param name="items">
+        <see cref="T:System.Net.Http.Formatting.MediaTypeFormatterCollection" /> öğesinin sonuna eklenecek öğeler. Öğe koleksiyonunun kendisi <see cref="null" /> olamaz, ancak <see cref="null" /> olan öğeler içerebilir.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterCollection.ClearItems">
+      <summary>Topluluktaki tüm öğeleri kaldırır.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterCollection.FindReader(System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+      <summary>Bir koleksiyonda, belirtilen mediaType değerinde .NET türünü okuyabilen bir biçimlendirici arama yardımcısı.</summary>
+      <returns>Türü okuyabilecek biçimlendirici. Herhangi bir biçimlendirici bulunamazsa boş.</returns>
+      <param name="type">Okunacak .NET türü</param>
+      <param name="mediaType">Eşleştirilecek ortam türü.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterCollection.FindWriter(System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+      <summary>Bir koleksiyonda, belirtilen mediaType değerinde .NET türünü yazabilen bir biçimlendirici arama yardımcısı.</summary>
+      <returns>Türü yazabilecek biçimlendirici. Herhangi bir biçimlendirici bulunamazsa boş.</returns>
+      <param name="type">Okunacak .NET türü</param>
+      <param name="mediaType">Eşleştirilecek ortam türü.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.MediaTypeFormatterCollection.FormUrlEncodedFormatter">
+      <summary>application/x-www-form-urlencoded verileri için kullanılacak <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> öğesini alır.</summary>
+      <returns>application/x-www-form-urlencoded verileri için kullanılacak <see cref="T:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter" /> öğesi.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterCollection.InsertItem(System.Int32,System.Net.Http.Formatting.MediaTypeFormatter)">
+      <summary>Koleksiyonda belirtilen dizine belirtilen öğeyi ekler.</summary>
+      <param name="index">Eklemenin yapılacağı dizin.</param>
+      <param name="item">Eklenecek öğe.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterCollection.InsertRange(System.Int32,System.Collections.Generic.IEnumerable{System.Net.Http.Formatting.MediaTypeFormatter})">
+      <summary>Bir koleksiyonun öğelerini belirtilen dizindeki <see cref="T:System.Net.Http.Formatting.MediaTypeFormatterCollection" /> öğesine ekler.</summary>
+      <param name="index">Yeni öğelerin ekleneceği sıfır tabanlı dizin.</param>
+      <param name="items">
+        <see cref="T:System.Net.Http.Formatting.MediaTypeFormatterCollection" />'a eklenmesi gereken öğeler . Öğe koleksiyonunun kendisi <see cref="null" /> olamaz, ancak <see cref="null" /> olan öğeler içerebilir.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterCollection.IsTypeExcludedFromValidation(System.Type)">
+      <summary>Tür, doğrulamanın dışında bırakılması gereken kesin olarak tanımlanmamış türlerden biriyse true olarak döndürülür.</summary>
+      <returns>Tür dışarıda tutulacaksa doğru, tersi durumda yanlıştır.</returns>
+      <param name="type">Değerlendirilecek .NET <see cref="T:System.Type" />.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.MediaTypeFormatterCollection.JsonFormatter">
+      <summary>JSON için kullanılacak <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> öğesini alır.</summary>
+      <returns>JSON için kullanılacak <see cref="T:System.Net.Http.Formatting.JsonMediaTypeFormatter" /> öğesini alır.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterCollection.RemoveItem(System.Int32)">
+      <summary>Belirtilen dizindeki öğeyi kaldırır.</summary>
+      <param name="index">Kaldırılacak öğenin dizini.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterCollection.SetItem(System.Int32,System.Net.Http.Formatting.MediaTypeFormatter)">
+      <summary>Koleksiyonda belirtilen dizine öğeyi atar.</summary>
+      <param name="index">Eklemenin yapılacağı dizin.</param>
+      <param name="item">Atanacak öğe.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.MediaTypeFormatterCollection.XmlFormatter">
+      <summary>XML için kullanılacak <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> öğesini alır.</summary>
+      <returns>XML için kullanılacak <see cref="T:System.Net.Http.Formatting.XmlMediaTypeFormatter" /> öğesini alır.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterExtensions.AddQueryStringMapping(System.Net.Http.Formatting.MediaTypeFormatter,System.String,System.String,System.Net.Http.Headers.MediaTypeHeaderValue)"></member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterExtensions.AddQueryStringMapping(System.Net.Http.Formatting.MediaTypeFormatter,System.String,System.String,System.String)"></member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterExtensions.AddRequestHeaderMapping(System.Net.Http.Formatting.MediaTypeFormatter,System.String,System.String,System.StringComparison,System.Boolean,System.Net.Http.Headers.MediaTypeHeaderValue)"></member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterExtensions.AddRequestHeaderMapping(System.Net.Http.Formatting.MediaTypeFormatter,System.String,System.String,System.StringComparison,System.Boolean,System.String)"></member>
+    <member name="T:System.Net.Http.Formatting.MediaTypeFormatterMatch">
+      <summary> Bu sınıf belirli bir <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" />'ın bir istekle ne kadar iyi eşleştiğini betimler. </summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterMatch.#ctor(System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,System.Nullable{System.Double},System.Net.Http.Formatting.MediaTypeFormatterMatchRanking)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.MediaTypeFormatterMatch" /> sınıfının yeni bir örneğini başlatır. </summary>
+      <param name="formatter">Eşleşme biçimlendiricisi.</param>
+      <param name="mediaType">Medya türü.Değeri null olabilir; bu durumda medya türü application/octet-stream değeri kullanılır.</param>
+      <param name="quality">Eşleşmenin kalitesi.Değeri null olabilir; bu durumda değeri 1.0 olan bir tam eşleşme olarak kabul edilir</param>
+      <param name="ranking">Eşleşme türü.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.MediaTypeFormatterMatch.Formatter">
+      <summary> Medya türü biçimlendiricisini alır. </summary>
+    </member>
+    <member name="P:System.Net.Http.Formatting.MediaTypeFormatterMatch.MediaType">
+      <summary> Eşleşen medya türünü alır. </summary>
+    </member>
+    <member name="P:System.Net.Http.Formatting.MediaTypeFormatterMatch.Quality">
+      <summary> Eşleşmenin kalitesini alır </summary>
+    </member>
+    <member name="P:System.Net.Http.Formatting.MediaTypeFormatterMatch.Ranking">
+      <summary> Oluşan eşleşme türünü alır. </summary>
+    </member>
+    <member name="T:System.Net.Http.Formatting.MediaTypeFormatterMatchRanking">
+      <summary> Bir <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> nesnesinin gelen bir istekte bulunan açık ve örtülü tercihlerle eşleşme derecesi hakkında bilgi içerir. </summary>
+    </member>
+    <member name="F:System.Net.Http.Formatting.MediaTypeFormatterMatchRanking.MatchOnCanWriteType">
+      <summary> Tür üzerinden eşlenir; yani biçimlendirici türü serileştirebilir.</summary>
+    </member>
+    <member name="F:System.Net.Http.Formatting.MediaTypeFormatterMatchRanking.MatchOnRequestAcceptHeaderAllMediaRange">
+      <summary>Accept üstbilgisindeki açık bir “*/*” aralığı üzerinden eşlenir.</summary>
+    </member>
+    <member name="F:System.Net.Http.Formatting.MediaTypeFormatterMatchRanking.MatchOnRequestAcceptHeaderLiteral">
+      <summary>“application/json” gibi açık bir kabul etme üstbilgisi hazır değeri üzerinden eşlenir.</summary>
+    </member>
+    <member name="F:System.Net.Http.Formatting.MediaTypeFormatterMatchRanking.MatchOnRequestAcceptHeaderSubtypeMediaRange">
+      <summary>Accept üstbilgisindeki “application/*” gibi açık bir alt tür aralığı üzerinden eşlenir.</summary>
+    </member>
+    <member name="F:System.Net.Http.Formatting.MediaTypeFormatterMatchRanking.MatchOnRequestMediaType">
+      <summary> HTTP istek iletisindeki varlık gövdesinin medya türü üzerinden eşlenir.</summary>
+    </member>
+    <member name="F:System.Net.Http.Formatting.MediaTypeFormatterMatchRanking.MatchOnRequestWithMediaTypeMapping">
+      <summary> Çeşitli <see cref="T:System.Net.Http.Formatting.MediaTypeMapping" />'ler uygulandıktan sonra <see cref="T:System.Net.Http.HttpRequestMessage" /> üzerinden eşlenir. </summary>
+    </member>
+    <member name="F:System.Net.Http.Formatting.MediaTypeFormatterMatchRanking.None">
+      <summary> Hiçbir eşleşme bulunmadı </summary>
+    </member>
+    <member name="T:System.Net.Http.Formatting.MediaTypeMapping">
+      <summary> Bazı özelliklere ve belirli bir <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" /> değerine sahip <see cref="T:System.Net.Http.HttpRequestMessage" /> veya <see cref="T:System.Net.Http.HttpResponseMessage" /> arasında bir ilişki oluşturmak için kullanılan bir soyut taban sınıf.  </summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeMapping.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue)">
+      <summary> Belirli mediaType değeriyle yeni bir <see cref="T:System.Net.Http.Formatting.MediaTypeMapping" /> örneğini başlatır. </summary>
+      <param name="mediaType"> Belirli <see cref="T:System.Net.Http.Formatting.MediaTypeMapping" /> özelliklerine sahip <see cref="T:System.Net.Http.HttpRequestMessage" /> veya <see cref="T:System.Net.Http.HttpResponseMessage" /> örnekleriyle ilişkili <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" />. </param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeMapping.#ctor(System.String)">
+      <summary> Belirli mediaType değeriyle yeni bir <see cref="T:System.Net.Http.Formatting.MediaTypeMapping" /> örneğini başlatır. </summary>
+      <param name="mediaType"> Belirli <see cref="T:System.Net.Http.Formatting.MediaTypeMapping" /> özelliklerine sahip <see cref="T:System.Net.Http.HttpRequestMessage" /> veya <see cref="T:System.Net.Http.HttpResponseMessage" /> örnekleriyle ilişkili <see cref="T:System.String" />. </param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.MediaTypeMapping.MediaType">
+      <summary> Belirli <see cref="T:System.Net.Http.Formatting.MediaTypeMapping" /> özelliklerine sahip <see cref="T:System.Net.Http.HttpRequestMessage" /> veya <see cref="T:System.Net.Http.HttpResponseMessage" /> örnekleriyle ilişkili <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" /> değerini alır. </summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeMapping.TryMatchMediaType(System.Net.Http.HttpRequestMessage)">
+      <summary>request ile ilişkili <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" /> eşleştirmesinin kalitesini döndürür. </summary>
+      <returns>Eşleşmenin kalitesi.0,0 ile 1,0 arasında olmalıdır.0,0 değeri hiç eşleştirme olmadığını gösterir.1,0 değeri tam bir eşleştirme olduğunu gösterir.</returns>
+      <param name="request">
+        <see cref="T:System.Net.Http.Formatting.MediaTypeMapping" /> eşlemesinin <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" /> ile ilişkili özelliklerini değerlendirmek için <see cref="T:System.Net.Http.HttpRequestMessage" />. </param>
+    </member>
+    <member name="T:System.Net.Http.Formatting.QueryStringMapping">
+      <summary> Sorgu dizelerinden <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" /> öğeleri sağlayan sınıf. </summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.QueryStringMapping.#ctor(System.String,System.String,System.Net.Http.Headers.MediaTypeHeaderValue)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.QueryStringMapping" /> sınıfının yeni bir örneğini başlatır. </summary>
+      <param name="queryStringParameterName">Varsa, eşleşecek sorgu dizesi parametresinin adı. </param>
+      <param name="queryStringParameterValue">queryStringParameterName ile belirtilen sorgu dizesi parametresinin değeri.</param>
+      <param name="mediaType">queryStringParameterName ile belirtilen sorgu parametresi varsa ve queryStringParameterValue ile belirtilen değer atanmışsa kullanılacak <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" />.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.QueryStringMapping.#ctor(System.String,System.String,System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.QueryStringMapping" /> sınıfının yeni bir örneğini başlatır. </summary>
+      <param name="queryStringParameterName">Varsa, eşleşecek sorgu dizesi parametresinin adı. </param>
+      <param name="queryStringParameterValue">queryStringParameterName ile belirtilen sorgu dizesi parametresinin değeri.</param>
+      <param name="mediaType">queryStringParameterName ile belirtilen sorgu parametresi varsa ve queryStringParameterValue ile belirtilen değer atanmışsa kullanılacak medya türü.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.QueryStringMapping.QueryStringParameterName">
+      <summary> Sorgu dizesi parametresinin adını alır. </summary>
+    </member>
+    <member name="P:System.Net.Http.Formatting.QueryStringMapping.QueryStringParameterValue">
+      <summary> Sorgu dizesi parametresinin değerini alır. </summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.QueryStringMapping.TryMatchMediaType(System.Net.Http.HttpRequestMessage)">
+      <summary> Geçerli <see cref="T:System.Net.Http.Formatting.QueryStringMapping" /> örneğinin request (istek) değerinden bir <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" /> döndürüp döndüremeyeceğini belirten bir değer döndürür. </summary>
+      <returns>Bu örnek, request değerinden bir <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" /> üretebiliyorsa 1,0 değerini, aksi takdirde 0,0 değerini döndürür.</returns>
+      <param name="request">Denetlenecek <see cref="T:System.Net.Http.HttpRequestMessage" /> öğesi.</param>
+    </member>
+    <member name="T:System.Net.Http.Formatting.RequestHeaderMapping">
+      <summary>Bu sınıf rastgele bir HTTP istek üstbilgisi alanından bir <see cref="T:System.Net.Http.HttpRequestMessage" /> or <see cref="T:System.Net.Http.HttpResponseMessage" /> varlık gövdesini işlemek için <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> örneklerini seçmek üzere kullanılan bir <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" /> öğesine eşleme sağlar.&lt;açıklamalar&gt;Bu sınıf bir eşleştirme için yalnızca <see cref="M:HttpRequestMessage.Headers" /> ile ilişkili üstbilgi alanlarını denetler.<see cref="M:HttpResponseMessage.Headers" /> veya <see cref="M:HttpContent.Headers" /> örnekleriyle ilişkili olan üstbilgi alanlarını kontrol etmez.&lt;/remarks&gt;</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.RequestHeaderMapping.#ctor(System.String,System.String,System.StringComparison,System.Boolean,System.Net.Http.Headers.MediaTypeHeaderValue)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.RequestHeaderMapping" /> sınıfının yeni bir örneğini başlatır. </summary>
+      <param name="headerName">Eşleştirilecek üstbilgi adı.</param>
+      <param name="headerValue">Eşleştirilecek üstbilgi değeri</param>
+      <param name="valueComparison">headerValue ile eşleştirme yapılırken kullanılacak <see cref="T:System.StringComparison" />.</param>
+      <param name="isValueSubstring">true olarak ayarlandığı takdirde headerValue, gerçek üstbilgi değerinin bir alt dizesi ile eşleşmesi durumunda bir eşleşme olarak değerlendirilir.</param>
+      <param name="mediaType">headerName ve headerValue değeri bir eşleşme olarak değerlendirildiği takdirde kullanılacak olan <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" />.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.RequestHeaderMapping.#ctor(System.String,System.String,System.StringComparison,System.Boolean,System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.RequestHeaderMapping" /> sınıfının yeni bir örneğini başlatır. </summary>
+      <param name="headerName">Eşleştirilecek üstbilgi adı.</param>
+      <param name="headerValue">Eşleştirilecek üstbilgi değeri</param>
+      <param name="valueComparison">headerValue ile eşleştirme yapılırken kullanılacak değer karşılaştırması.</param>
+      <param name="isValueSubstring">true olarak ayarlandığı takdirde headerValue, gerçek üstbilgi değerinin bir alt dizesi ile eşleşmesi durumunda bir eşleşme olarak değerlendirilir.</param>
+      <param name="mediaType">headerName ve headerValue değeri bir eşleşme olarak değerlendirildiği taktirde kullanılacak olan medya türü.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.RequestHeaderMapping.HeaderName">
+      <summary> Eşleştirilecek üstbilginin adını alır. </summary>
+    </member>
+    <member name="P:System.Net.Http.Formatting.RequestHeaderMapping.HeaderValue">
+      <summary> Eşleştirilecek üstbilgi değerini alır. </summary>
+    </member>
+    <member name="P:System.Net.Http.Formatting.RequestHeaderMapping.HeaderValueComparison">
+      <summary>
+        <see cref="M:HeaderValue" /> eşleştirmesi yapılırken kullanılacak olan <see cref="T:System.StringComparison" /> öğesini alır. </summary>
+    </member>
+    <member name="P:System.Net.Http.Formatting.RequestHeaderMapping.IsValueSubstring">
+      <summary>
+        <see cref="M:HeaderValue" /> öğesinin gerçek üstbilgi değerinin bir alt dizesi olarak eşleşme olup olmadığını belirten bir değer alır.bu örnek bir değer alt dizesidir.</summary>
+      <returns>true<see cref="P:System.Net.Http.Formatting.RequestHeaderMapping.HeaderValue" />false</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.RequestHeaderMapping.TryMatchMediaType(System.Net.Http.HttpRequestMessage)">
+      <summary> Geçerli <see cref="T:System.Net.Http.Formatting.RequestHeaderMapping" /> örneğinin request (istek) değerinden bir <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" /> döndürüp döndüremeyeceğini belirten bir değer döndürür. </summary>
+      <returns>Eşleşmenin kalitesi.0,0 ile 1,0 arasında olmalıdır.0,0 değeri hiç eşleştirme olmadığını gösterir.1,0 değeri tam bir eşleştirme olduğunu gösterir.</returns>
+      <param name="request">Denetlenecek <see cref="T:System.Net.Http.HttpRequestMessage" /> öğesi.</param>
+    </member>
+    <member name="T:System.Net.Http.Formatting.XmlHttpRequestHeaderMapping">
+      <summary> İstekte açık bir Accept üstbilgi alanı mevcut değilse AJAX XmlHttpRequest (XHR) tarafından belirlenen X-Requested-With HTTP üstbilgisi alanını medya türü application/json değerine eşleyen bir <see cref="T:System.Net.Http.Formatting.RequestHeaderMapping" />. </summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlHttpRequestHeaderMapping.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.XmlHttpRequestHeaderMapping" /> sınıfının yeni bir örneğini başlatır </summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlHttpRequestHeaderMapping.TryMatchMediaType(System.Net.Http.HttpRequestMessage)">
+      <summary> Geçerli <see cref="T:System.Net.Http.Formatting.RequestHeaderMapping" /> örneğinin request (istek) değerinden bir <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" /> döndürüp döndüremeyeceğini belirten bir değer döndürür. </summary>
+      <returns>Eşleşmenin kalitesi.0.0 değeri hiçbir eşleşme olmadığını gösterir.Bir 1.0 değeri tam bir eşleşmeyi ve isteğin XmlHttpRequest bir Accept üstbilgisi olmadan kullanılarak yapıldığını gösterir.</returns>
+      <param name="request">Denetlenecek <see cref="T:System.Net.Http.HttpRequestMessage" /> öğesi.</param>
+    </member>
+    <member name="T:System.Net.Http.Formatting.XmlMediaTypeFormatter">
+      <summary>Xml öğesini işlemek için <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> sınıfı. </summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.XmlMediaTypeFormatter" /> sınıfının yeni bir örneğini başlatır.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.#ctor(System.Net.Http.Formatting.XmlMediaTypeFormatter)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.XmlMediaTypeFormatter" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="formatter">Ayarları kopyalanacak <see cref="T:System.Net.Http.Formatting.XmlMediaTypeFormatter" /> örneği.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.CanReadType(System.Type)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.XmlMediaTypeFormatter" /> öğesinin belirtilen türe ait bir nesnenin serisini kaldırıp kaldıramayacağını sorgular.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Formatting.XmlMediaTypeFormatter" /> öğesi türün serisini kaldırabiliyorsa true; kaldıramıyorsa, false.</returns>
+      <param name="type">Serisi kaldırılacak tür.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.CanWriteType(System.Type)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.XmlMediaTypeFormatter" /> öğesinin belirtilen türe ait bir nesneyi serileştirip serileştiremeyeceğini sorgular.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Formatting.XmlMediaTypeFormatter" /> öğesi türü serileştirebiliyorsa true; serileştiremiyorsa, false.</returns>
+      <param name="type">Serileştirilecek tür.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.CreateDataContractSerializer(System.Type)">
+      <summary>DataContractSerializer serileştiriciyi almak üzere seri durumundan çıkarma sırasında çağrılır.</summary>
+      <returns>Serileştirme için kullanılan nesne.</returns>
+      <param name="type">Serileştirilecek veya seri durumdan çıkarılacak nesne türü.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.CreateXmlReader(System.IO.Stream,System.Net.Http.HttpContent)">
+      <summary>Akıştan nesne okumak için kullanılmak üzere XML okuyucuyu almak amacıyla seri durumundan çıkarma sırasında çağrılır.</summary>
+      <returns>Nesne okumak için kullanılacak <see cref="T:System.Xml.XmlReader" />.</returns>
+      <param name="readStream">Okunacak <see cref="T:System.IO.Stream" />.</param>
+      <param name="content">Okunmakta olan içeriğe ilişkin <see cref="T:System.Net.Http.HttpContent" />.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.CreateXmlSerializer(System.Type)">
+      <summary>XML serileştiriciyi almak üzere seri durumundan çıkarma sırasında çağrılır.</summary>
+      <returns>Serileştirme için kullanılan nesne.</returns>
+      <param name="type">Serileştirilecek veya seri durumdan çıkarılacak nesne türü.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.CreateXmlWriter(System.IO.Stream,System.Net.Http.HttpContent)">
+      <summary>Akışa nesne yazmak için kullanılmak üzere XML yazıcıyı almak amacıyla serileştirme sırasında çağrılır.</summary>
+      <returns>Nesne yazmak için kullanılacak <see cref="T:System.Xml.XmlWriter" />.</returns>
+      <param name="writeStream">Yazılacak <see cref="T:System.IO.Stream" />.</param>
+      <param name="content">Yazılmakta olan içeriğe ilişkin <see cref="T:System.Net.Http.HttpContent" />.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.XmlMediaTypeFormatter.DefaultMediaType">
+      <summary>XML biçimlendiricisi için varsayılan medya türünü alır.</summary>
+      <returns>Varsayılan medya türü “application/xml”.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.GetDeserializer(System.Type,System.Net.Http.HttpContent)">
+      <summary>Nesneleri seri durumdan çıkarmak için kullanılmak üzere XML serileştiriciyi almak amacıyla seri durumundan çıkarma sırasında çağrılır.</summary>
+      <returns>Nesneyi seri durumdan çıkarmak için kullanılacak bir <see cref="T:System.Runtime.Serialization.XmlObjectSerializer" /> veya <see cref="T:System.Xml.Serialization.XmlSerializer" /> örneği.</returns>
+      <param name="type">Serisi kaldırılacak nesnenin türü.</param>
+      <param name="content">Okunmakta olan içeriğe ilişkin <see cref="T:System.Net.Http.HttpContent" />.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.GetSerializer(System.Type,System.Object,System.Net.Http.HttpContent)">
+      <summary>Nesneleri serileştirmek için kullanılmak üzere XML serileştiriciyi almak amacıyla serileştirme sırasında çağrılır.</summary>
+      <returns>Nesneyi serileştirmek için kullanılacak bir <see cref="T:System.Runtime.Serialization.XmlObjectSerializer" /> veya <see cref="T:System.Xml.Serialization.XmlSerializer" /> örneği.</returns>
+      <param name="type">Serileştirilecek nesnenin türü.</param>
+      <param name="value">Seri hale getirilecek nesne.</param>
+      <param name="content">Yazılmakta olan içeriğe ilişkin <see cref="T:System.Net.Http.HttpContent" />.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.XmlMediaTypeFormatter.Indent">
+      <summary>Veriler yazılırken öğelerin girintilenip girintilenmeyeceğini belirten bir değer alır veya ayarlar.</summary>
+      <returns>girintili öğeler için true, aksi halde false şeklindedir.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.InvokeCreateXmlReader(System.IO.Stream,System.Net.Http.HttpContent)">
+      <summary>Bu yöntem altyapısını destekler ve doğrudan kodunuzdan kullanılmaya yönelik değildir.</summary>
+      <returns>
+        <see cref="T:System.Xml.XmlReader" /> döndürür.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.InvokeCreateXmlWriter(System.IO.Stream,System.Net.Http.HttpContent)">
+      <summary>Bu yöntem altyapısını destekler ve doğrudan kodunuzdan kullanılmaya yönelik değildir.</summary>
+      <returns>
+        <see cref="T:System.Xml.XmlWriter" /> döndürür.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.InvokeGetDeserializer(System.Type,System.Net.Http.HttpContent)">
+      <summary>Bu yöntem altyapısını destekler ve doğrudan kodunuzdan kullanılmaya yönelik değildir.</summary>
+      <returns>
+        <see cref="T:System.Object" /> döndürür.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.InvokeGetSerializer(System.Type,System.Object,System.Net.Http.HttpContent)">
+      <summary>Bu yöntem altyapısını destekler ve doğrudan kodunuzdan kullanılmaya yönelik değildir.</summary>
+      <returns>
+        <see cref="T:System.Object" /> döndürür.</returns>
+    </member>
+    <member name="P:System.Net.Http.Formatting.XmlMediaTypeFormatter.MaxDepth">
+      <summary>İç içe geçen düğüm derinliği üst sınırını alır veya ayarlar.</summary>
+      <returns>İç içe geçen düğüm derinliği üst sınırı.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.ReadFromStreamAsync(System.Type,System.IO.Stream,System.Net.Http.HttpContent,System.Net.Http.Formatting.IFormatterLogger)">
+      <summary> Belirtilen type değerinden bir nesneyi belirtilen stream değerinden okumak için seri kaldırma sırasında çağrılır. </summary>
+      <returns>Sonucu, okunmuş nesne örneği olacak bir <see cref="T:System.Threading.Tasks.Task" />.</returns>
+      <param name="type">Okunacak nesnenin türü.</param>
+      <param name="readStream">Okunacak <see cref="T:System.IO.Stream" />.</param>
+      <param name="content">Okunmakta olan içeriğe ilişkin <see cref="T:System.Net.Http.HttpContent" />.</param>
+      <param name="formatterLogger">Olayların günlüğe kaydedileceği <see cref="T:System.Net.Http.Formatting.IFormatterLogger" />.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.RemoveSerializer(System.Type)">
+      <summary>Belirtilen türle ilişkilendirilmiş olan serileştiricinin kaydını iptal eder.</summary>
+      <returns>Bir serileştirici tür için kaydedildiyse true, aksi halde false şeklindedir.</returns>
+      <param name="type">Seri hale getiricisi kaldırılacak olan nesnenin türü.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.SetSerializer``1(System.Runtime.Serialization.XmlObjectSerializer)">
+      <summary>Belirtilen türdeki nesneleri okumak veya yazmak için bir <see cref="T:System.Runtime.Serialization.XmlObjectSerializer" /> serileştiricisi kaydeder.</summary>
+      <param name="serializer">
+        <see cref="T:System.Runtime.Serialization.XmlObjectSerializer" /> örneği.</param>
+      <typeparam name="T">
+        <paramref name="serializer" /> ile serileştirilecek veya serisi kaldırılacak nesne türünü belirtir.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.SetSerializer(System.Type,System.Runtime.Serialization.XmlObjectSerializer)">
+      <summary>Belirtilen türdeki nesneleri okumak veya yazmak için bir <see cref="T:System.Runtime.Serialization.XmlObjectSerializer" /> serileştiricisi kaydeder.</summary>
+      <param name="type">
+        <paramref name="serializer" /> ile serileştirilecek veya serisi kaldırılacak nesne türünü belirtir.</param>
+      <param name="serializer">
+        <see cref="T:System.Runtime.Serialization.XmlObjectSerializer" /> örneği.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.SetSerializer(System.Type,System.Xml.Serialization.XmlSerializer)">
+      <summary>Belirtilen türdeki nesneleri okumak veya yazmak için bir <see cref="T:System.Xml.Serialization.XmlSerializer" /> serileştiricisi kaydeder.</summary>
+      <param name="type">
+        <paramref name="serializer" /> ile serileştirilecek veya serisi kaldırılacak nesne türünü belirtir.</param>
+      <param name="serializer">
+        <see cref="T:System.Xml.Serialization.XmlSerializer" /> örneği.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.SetSerializer``1(System.Xml.Serialization.XmlSerializer)">
+      <summary>Belirtilen türdeki nesneleri okumak veya yazmak için bir <see cref="T:System.Xml.Serialization.XmlSerializer" /> serileştiricisi kaydeder.</summary>
+      <param name="serializer">
+        <see cref="T:System.Xml.Serialization.XmlSerializer" /> örneği.</param>
+      <typeparam name="T">
+        <paramref name="serializer" /> ile serileştirilecek veya serisi kaldırılacak nesne türünü belirtir.</typeparam>
+    </member>
+    <member name="P:System.Net.Http.Formatting.XmlMediaTypeFormatter.UseXmlSerializer">
+      <summary>XML biçimlendiricisinin <see cref="T:System.Runtime.Serialization.DataContractSerializer" /> öğesini kullanmak yerine varsayılan serileştirici olarak <see cref="T:System.Xml.Serialization.XmlSerializer" /> öğesini kullanıp kullanmadığını gösteren değeri alır veya ayarlar.</summary>
+      <returns>true ise, biçimlendirici varsayılan olarak <see cref="T:System.Xml.Serialization.XmlSerializer" /> öğesini kullanır; değilse, varsayılan olarak <see cref="T:System.Runtime.Serialization.DataContractSerializer" /> öğesini kullanır.</returns>
+    </member>
+    <member name="P:System.Net.Http.Formatting.XmlMediaTypeFormatter.WriterSettings">
+      <summary>Yazma sırasında kullanılacak ayarları alır.</summary>
+      <returns>Yazma sırasında kullanılacak ayarlar.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.WriteToStreamAsync(System.Type,System.Object,System.IO.Stream,System.Net.Http.HttpContent,System.Net.TransportContext,System.Threading.CancellationToken)">
+      <summary>Belirtilen type değerine ilişkin bir nesneyi belirtilen writeStream değerine yazmak için serileştirme sırasında çağrılır.</summary>
+      <returns>Değeri akışa yazacak olan <see cref="T:System.Threading.Tasks.Task" />.</returns>
+      <param name="type">Yazılacak nesnenin türü.</param>
+      <param name="value">Yazılacak nesne.</param>
+      <param name="writeStream">
+        <see cref="T:System.IO.Stream" /> öğesine yazılacak.</param>
+      <param name="content">Yazılmakta olan içeriğe ilişkin <see cref="T:System.Net.Http.HttpContent" />.</param>
+      <param name="transportContext">
+        <see cref="T:System.Net.TransportContext" />.</param>
+      <param name="cancellationToken">İptalleri izleyecek belirteç.</param>
+    </member>
+    <member name="T:System.Net.Http.Handlers.HttpProgressEventArgs">
+      <summary>HTTP ilerlemesinin olay değişkenlerini temsil eder.</summary>
+    </member>
+    <member name="M:System.Net.Http.Handlers.HttpProgressEventArgs.#ctor(System.Int32,System.Object,System.Int64,System.Nullable{System.Int64})">
+      <summary>
+        <see cref="T:System.Net.Http.Handlers.HttpProgressEventArgs" /> sınıfının yeni bir örneğini başlatır. </summary>
+      <param name="progressPercentage">İlerleme yüzdesi.</param>
+      <param name="userToken">Kullanıcı simgesi.</param>
+      <param name="bytesTransferred">Aktarılan bayt sayısı.</param>
+      <param name="totalBytes">Aktarılan baytların toplam sayısı.</param>
+    </member>
+    <member name="P:System.Net.Http.Handlers.HttpProgressEventArgs.BytesTransferred"></member>
+    <member name="P:System.Net.Http.Handlers.HttpProgressEventArgs.TotalBytes"></member>
+    <member name="T:System.Net.Http.Handlers.ProgressMessageHandler">
+      <summary>Yüklenen istek varlıkları ve indirilen yanıt varlıkları için ilerleme bildirimi oluşturur.</summary>
+    </member>
+    <member name="M:System.Net.Http.Handlers.ProgressMessageHandler.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.Handlers.ProgressMessageHandler" /> sınıfının yeni bir örneğini başlatır.</summary>
+    </member>
+    <member name="M:System.Net.Http.Handlers.ProgressMessageHandler.#ctor(System.Net.Http.HttpMessageHandler)">
+      <summary>
+        <see cref="T:System.Net.Http.Handlers.ProgressMessageHandler" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="innerHandler">İç ileti işleyicisi.</param>
+    </member>
+    <member name="E:System.Net.Http.Handlers.ProgressMessageHandler.HttpReceiveProgress">
+      <summary>Olay varlıkları indirilirken oluşur.</summary>
+    </member>
+    <member name="E:System.Net.Http.Handlers.ProgressMessageHandler.HttpSendProgress">
+      <summary>Olay varlıkları yüklenirken oluşur.</summary>
+    </member>
+    <member name="M:System.Net.Http.Handlers.ProgressMessageHandler.OnHttpRequestProgress(System.Net.Http.HttpRequestMessage,System.Net.Http.Handlers.HttpProgressEventArgs)">
+      <summary>İlerleme isteğini işleyen olayı başlatır.</summary>
+      <param name="request">İstek.</param>
+      <param name="e">İsteğin olay işleyicisi.</param>
+    </member>
+    <member name="M:System.Net.Http.Handlers.ProgressMessageHandler.OnHttpResponseProgress(System.Net.Http.HttpRequestMessage,System.Net.Http.Handlers.HttpProgressEventArgs)">
+      <summary>İlerleme yanıtını işleyen olayı başlatır.</summary>
+      <param name="request">İstek.</param>
+      <param name="e">İsteğin olay işleyicisi.</param>
+    </member>
+    <member name="M:System.Net.Http.Handlers.ProgressMessageHandler.SendAsync(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
+      <summary>Belirtilen ilerleme iletisini teslimat için bir HTTP sunucusuna gönderir.</summary>
+      <returns>Gönderilen ilerleme iletisi.</returns>
+      <param name="request">İstek.</param>
+      <param name="cancellationToken">İptal belirteci.</param>
+    </member>
+    <member name="T:System.Net.Http.Headers.CookieHeaderValue">
+      <summary>Tanımlama bilgisi üstbilgisinin değerini sağlar.</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.CookieHeaderValue.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.Headers.CookieHeaderValue" /> sınıfının yeni bir örneğini başlatır.</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.CookieHeaderValue.#ctor(System.String,System.Collections.Specialized.NameValueCollection)">
+      <summary>
+        <see cref="T:System.Net.Http.Headers.CookieHeaderValue" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="name">Adın değeri.</param>
+      <param name="values">Değerler.</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.CookieHeaderValue.#ctor(System.String,System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.Headers.CookieHeaderValue" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="name">Adın değeri.</param>
+      <param name="value">Değer.</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.CookieHeaderValue.Clone">
+      <summary>Tanımlama bilgisi değerinin basit bir kopyasını oluşturur.</summary>
+      <returns>Tanımlama bilgisi değerinin basit bir kopyası.</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CookieHeaderValue.Cookies">
+      <summary>İstemci tarafından gönderilen bir tanımlama bilgileri topluluğu alır.</summary>
+      <returns>İstemcinin tanımlama bilgisi değişkenlerini temsil eden bir topluluk nesnesi.</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CookieHeaderValue.Domain">
+      <summary>Tanımlama bilgisi ile ilişkilendirilecek etki alanını alır veya ayarlar.</summary>
+      <returns>Tanımlama bilgisi ile ilişkilendirilecek etki alanı adı.</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CookieHeaderValue.Expires">
+      <summary>Tanımlama bilgisinin süre sonu tarihini ve saatini alır veya ayarlar.</summary>
+      <returns>İstemcideki günün tanımlama bilgisinin süresinin dolduğu saati.</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CookieHeaderValue.HttpOnly">
+      <summary>Bir tanımlama bilgisinin istemci tarafı komut dosyası tarafından erişilip erişilemeyeceğini belirleyen değeri alır veya ayarlar.</summary>
+      <returns>Tanımlama bilgisi HttpOnly özniteliğine sahipse ve bir istemci tarafı komut dosyası aracılığıyla erişilemiyorsa true; erişilebiliyorsa, false.</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CookieHeaderValue.Item(System.String)">
+      <summary>Tanımlama bilgisi özelliğine giden bir kısayol alır.</summary>
+      <returns>Tanımlama bilgisi değeri.</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CookieHeaderValue.MaxAge">
+      <summary>Bir kaynak için izin verilen en yüksek yaşı alır veya ayarlar.</summary>
+      <returns>Bir kaynak için izin verilen en yüksek yaş.</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CookieHeaderValue.Path">
+      <summary>Geçerli tanımlama bilgisi ile iletilecek sanal yolu alır veya ayarlar.</summary>
+      <returns>Geçerli tanımlama bilgisi ile iletilecek sanal yol.</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CookieHeaderValue.Secure">
+      <summary>Güvenli Yuvalar Katmanı (SSL) kullanarak yani yalnızca HTTPS üzerinden tanımlama bilgisinin iletilip iletilmeyeceğini gösteren bir değer alır veya ayarlar.</summary>
+      <returns>Tanımlama bilgisini bir SSL bağlantısı (HTTPS) üzerinden iletmek için true, aksi halde false şeklindedir.</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.CookieHeaderValue.ToString">
+      <summary>Geçerli nesneyi temsil eden dizeyi döndürür.</summary>
+      <returns>Geçerli nesneyi temsil eden dize.</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.CookieHeaderValue.TryParse(System.String,System.Net.Http.Headers.CookieHeaderValue@)">
+      <summary>Dize gösteriminin dönüştürülüp dönüştürülmeyeceğini belirten bir değer gösterir.</summary>
+      <returns>Dize gösterimi dönüştürülecekse true, aksi halde false şeklindedir.</returns>
+      <param name="input">Giriş değeri.</param>
+      <param name="parsedValue">Dönüştürülecek ayrıştırılmış değer.</param>
+    </member>
+    <member name="T:System.Net.Http.Headers.CookieState">
+      <summary>Ad ve ilişkili tanımlama bilgisi durumunu içerir.</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.CookieState.#ctor(System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.Headers.CookieState" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="name">Tanımlama bilgisinin adı.</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.CookieState.#ctor(System.String,System.Collections.Specialized.NameValueCollection)">
+      <summary>
+        <see cref="T:System.Net.Http.Headers.CookieState" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="name">Tanımlama bilgisinin adı.</param>
+      <param name="values">Tanımlama bilgisine ilişkin ad-değer çifti topluluğu.</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.CookieState.#ctor(System.String,System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.Headers.CookieState" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="name">Tanımlama bilgisinin adı.</param>
+      <param name="value">Tanımlama bilgisinin değeri.</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.CookieState.Clone">
+      <summary>Geçerli örneğin kopyası olan yeni bir nesne döndürür.</summary>
+      <returns>Geçerli örneğin kopyası olan yeni bir nesne.</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CookieState.Item(System.String)">
+      <summary>Tanımlama bilgisi verileri yapılandırıldıysa, belirtilen tanımlama bilgisi adını taşıyan tanımlama bilgisi değerini alır veya ayarlar.</summary>
+      <returns>Belirtilen tanımlama bilgisi adını taşıyan tanımlama bilgisi değeri.</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CookieState.Name">
+      <summary>Tanımlama bilgisinin adını alır veya ayarlar.</summary>
+      <returns>Tanımlama bilgisinin adı.</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.CookieState.ToString">
+      <summary>Geçerli nesnenin dize gösterimini döndürür.</summary>
+      <returns>Geçerli nesnenin dize gösterimi.</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CookieState.Value">
+      <summary>Tanımlama bilgisi verisi basit bir dize değeri ise, tanımlama bilgisi değerini alır veya ayarlar.</summary>
+      <returns>Tanımlama bilgisinin değeri. </returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CookieState.Values">
+      <summary>Tanımlama bilgisi verileri yapılandırıldıysa, ad-değer çifti topluluğunu alır veya ayarlar.</summary>
+      <returns>Tanımlama bilgisine ilişkin ad-değer çifti topluluğu.</returns>
+    </member>
+  </members>
+</doc>

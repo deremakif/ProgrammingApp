@@ -1,0 +1,12 @@
+C:\Users\mehmet akif\Desktop\ASP.NET\kenanyildirim\ASP.NET WEB API Dersleri\ProgrammingApp\ProgrammingApp\Programming.DAL\bin\Debug\Programming.DAL.dll.config
+C:\Users\mehmet akif\Desktop\ASP.NET\kenanyildirim\ASP.NET WEB API Dersleri\ProgrammingApp\ProgrammingApp\Programming.DAL\bin\Debug\Programming.DAL.dll
+C:\Users\mehmet akif\Desktop\ASP.NET\kenanyildirim\ASP.NET WEB API Dersleri\ProgrammingApp\ProgrammingApp\Programming.DAL\bin\Debug\Programming.DAL.pdb
+C:\Users\mehmet akif\Desktop\ASP.NET\kenanyildirim\ASP.NET WEB API Dersleri\ProgrammingApp\ProgrammingApp\Programming.DAL\bin\Debug\EntityFramework.dll
+C:\Users\mehmet akif\Desktop\ASP.NET\kenanyildirim\ASP.NET WEB API Dersleri\ProgrammingApp\ProgrammingApp\Programming.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\mehmet akif\Desktop\ASP.NET\kenanyildirim\ASP.NET WEB API Dersleri\ProgrammingApp\ProgrammingApp\Programming.DAL\bin\Debug\EntityFramework.xml
+C:\Users\mehmet akif\Desktop\ASP.NET\kenanyildirim\ASP.NET WEB API Dersleri\ProgrammingApp\ProgrammingApp\Programming.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\mehmet akif\Desktop\ASP.NET\kenanyildirim\ASP.NET WEB API Dersleri\ProgrammingApp\ProgrammingApp\Programming.DAL\obj\Debug\Programming.DAL.csprojAssemblyReference.cache
+C:\Users\mehmet akif\Desktop\ASP.NET\kenanyildirim\ASP.NET WEB API Dersleri\ProgrammingApp\ProgrammingApp\Programming.DAL\obj\Debug\Programming.DAL.csproj.CoreCompileInputs.cache
+C:\Users\mehmet akif\Desktop\ASP.NET\kenanyildirim\ASP.NET WEB API Dersleri\ProgrammingApp\ProgrammingApp\Programming.DAL\obj\Debug\Programming.DAL.csproj.CopyComplete
+C:\Users\mehmet akif\Desktop\ASP.NET\kenanyildirim\ASP.NET WEB API Dersleri\ProgrammingApp\ProgrammingApp\Programming.DAL\obj\Debug\Programming.DAL.dll
+C:\Users\mehmet akif\Desktop\ASP.NET\kenanyildirim\ASP.NET WEB API Dersleri\ProgrammingApp\ProgrammingApp\Programming.DAL\obj\Debug\Programming.DAL.pdb

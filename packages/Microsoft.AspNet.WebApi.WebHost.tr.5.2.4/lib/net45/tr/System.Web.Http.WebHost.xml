@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Web.Http.WebHost</name>
+  </assembly>
+  <members>
+    <member name="T:System.Web.Http.GlobalConfiguration">
+      <summary> ASP.NET uygulamalarına ilişkin genel bir <see cref="T:System.Web.Http.HttpConfiguration" /> sağlar. </summary>
+    </member>
+    <member name="P:System.Web.Http.GlobalConfiguration.Configuration"></member>
+    <member name="M:System.Web.Http.GlobalConfiguration.Configure(System.Action{System.Web.Http.HttpConfiguration})"></member>
+    <member name="P:System.Web.Http.GlobalConfiguration.DefaultHandler"></member>
+    <member name="P:System.Web.Http.GlobalConfiguration.DefaultServer">
+      <summary> Genel <see cref="T:System.Web.Http.HttpServer" /> değerini alır. </summary>
+      <returns>Genel <see cref="T:System.Web.Http.HttpServer" />.</returns>
+    </member>
+    <member name="T:System.Web.Http.RouteCollectionExtensions">
+      <summary>
+        <see cref="T:System.Web.Routing.RouteCollection" /> genişletme yöntemleri</summary>
+    </member>
+    <member name="M:System.Web.Http.RouteCollectionExtensions.MapHttpRoute(System.Web.Routing.RouteCollection,System.String,System.String)">
+      <summary>Belirtilen rota şablonunu eşler.</summary>
+      <returns>Eşlenen rotaya bir başvuru.</returns>
+      <param name="routes">Uygulama için rota koleksiyonu.</param>
+      <param name="name">Eşlenecek rotanın adı.</param>
+      <param name="routeTemplate">Rota için rota şablonu.</param>
+    </member>
+    <member name="M:System.Web.Http.RouteCollectionExtensions.MapHttpRoute(System.Web.Routing.RouteCollection,System.String,System.String,System.Object)">
+      <summary>Belirtilen rota şablonunu eşler ve varsayılan rotayı ayarlar.</summary>
+      <returns>Eşlenen rotaya bir başvuru.</returns>
+      <param name="routes">Uygulama için rota koleksiyonu.</param>
+      <param name="name">Eşlenecek rotanın adı.</param>
+      <param name="routeTemplate">Rota için rota şablonu.</param>
+      <param name="defaults">Varsayılan rota değerlerini içeren bir nesne.</param>
+    </member>
+    <member name="M:System.Web.Http.RouteCollectionExtensions.MapHttpRoute(System.Web.Routing.RouteCollection,System.String,System.String,System.Object,System.Object)">
+      <summary>Belirtilen rota şablonunu eşler ve varsayılan rota değerleri ile kısıtlamaları ayarlar.</summary>
+      <returns>Eşlenen rotaya bir başvuru.</returns>
+      <param name="routes">Uygulama için rota koleksiyonu.</param>
+      <param name="name">Eşlenecek rotanın adı.</param>
+      <param name="routeTemplate">Rota için rota şablonu.</param>
+      <param name="defaults">Varsayılan rota değerlerini içeren bir nesne.</param>
+      <param name="constraints">routeTemplate için değerler belirten bir ifade kümesi.</param>
+    </member>
+    <member name="M:System.Web.Http.RouteCollectionExtensions.MapHttpRoute(System.Web.Routing.RouteCollection,System.String,System.String,System.Object,System.Object,System.Net.Http.HttpMessageHandler)">
+      <summary>Belirtilen rota şablonunu eşler ve varsayılan rota değerleri, kısıtlamalar ve uç nokta ileti işleyicilerini ayarlar.</summary>
+      <returns>Eşlenen rotaya bir başvuru.</returns>
+      <param name="routes">Uygulama için rota koleksiyonu.</param>
+      <param name="name">Eşlenecek rotanın adı.</param>
+      <param name="routeTemplate">Rota için rota şablonu.</param>
+      <param name="defaults">Varsayılan rota değerlerini içeren bir nesne.</param>
+      <param name="constraints">routeTemplate için değerler belirten bir ifade kümesi.</param>
+      <param name="handler">İsteğin dağıtılacağı işleyici.</param>
+    </member>
+    <member name="T:System.Web.Http.WebHost.HttpControllerHandler">
+      <summary>ASP.NET isteklerini <see cref="T:System.Web.Http.HttpServer" /> ardışık düzenine geçiren ve sonucu geriye yazan bir <see cref="T:System.Web.IHttpTaskAsyncHandler" />.</summary>
+    </member>
+    <member name="M:System.Web.Http.WebHost.HttpControllerHandler.#ctor(System.Web.Routing.RouteData)">
+      <summary>
+        <see cref="T:System.Web.Http.WebHost.HttpControllerHandler" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="routeData">Rota verileri.</param>
+    </member>
+    <member name="M:System.Web.Http.WebHost.HttpControllerHandler.#ctor(System.Web.Routing.RouteData,System.Net.Http.HttpMessageHandler)">
+      <summary>
+        <see cref="T:System.Web.Http.WebHost.HttpControllerHandler" /> sınıfının yeni bir örneğini başlatır.</summary>
+      <param name="routeData">Rota verileri.</param>
+      <param name="handler">İsteklerin gönderileceği ileti işleyicisi.</param>
+    </member>
+    <member name="M:System.Web.Http.WebHost.HttpControllerHandler.ProcessRequestAsync(System.Web.HttpContext)">
+      <summary>Zaman uyumsuz bir görevi işleyen kodu sağlar</summary>
+      <returns>Zaman uyumsuz görev.</returns>
+      <param name="context">HTTP bağlamı.</param>
+    </member>
+    <member name="T:System.Web.Http.WebHost.HttpControllerRouteHandler">
+      <summary> İstekleri belirli bir <see cref="T:System.Web.Http.HttpServer" /> örneğine geçirebilen <see cref="T:System.Web.Http.WebHost.HttpControllerHandler" /> isteklerini döndüren bir <see cref="T:System.Web.Routing.IRouteHandler" />. </summary>
+    </member>
+    <member name="M:System.Web.Http.WebHost.HttpControllerRouteHandler.#ctor">
+      <summary>
+        <see cref="T:System.Web.Http.WebHost.HttpControllerRouteHandler" /> sınıfının yeni bir örneğini başlatır. </summary>
+    </member>
+    <member name="M:System.Web.Http.WebHost.HttpControllerRouteHandler.GetHttpHandler(System.Web.Routing.RequestContext)">
+      <summary> İsteği işleyen nesneyi sağlar. </summary>
+      <returns> İsteği işleyen bir nesne. </returns>
+      <param name="requestContext">İstekle ilgili bilgileri yalıtan bir nesne.</param>
+    </member>
+    <member name="P:System.Web.Http.WebHost.HttpControllerRouteHandler.Instance">
+      <summary> Tekli <see cref="T:System.Web.Http.WebHost.HttpControllerRouteHandler" /> örneğini alır. </summary>
+    </member>
+    <member name="M:System.Web.Http.WebHost.HttpControllerRouteHandler.System#Web#Routing#IRouteHandler#GetHttpHandler(System.Web.Routing.RequestContext)">
+      <summary> İsteği işleyen nesneyi sağlar. </summary>
+      <returns> İsteği işleyen bir nesne. </returns>
+      <param name="requestContext">İstekle ilgili bilgileri yalıtan bir nesne.</param>
+    </member>
+    <member name="T:System.Web.Http.WebHost.PreApplicationStartCode">
+      <summary>Basit üyelik başlatma öncesi kodu için bir kaydetme noktası sağlar.</summary>
+    </member>
+    <member name="M:System.Web.Http.WebHost.PreApplicationStartCode.Start">
+      <summary>Basit üyelik uygulama başlatma öncesi kodunu kaydeder.</summary>
+    </member>
+    <member name="T:System.Web.Http.WebHost.WebHostBufferPolicySelector">
+      <summary>Web ana bilgisayarı arabellek ilkesi seçiciyi gösterir.</summary>
+    </member>
+    <member name="M:System.Web.Http.WebHost.WebHostBufferPolicySelector.#ctor">
+      <summary>
+        <see cref="T:System.Web.Http.WebHost.WebHostBufferPolicySelector" /> sınıfının yeni bir örneğini başlatır.</summary>
+    </member>
+    <member name="M:System.Web.Http.WebHost.WebHostBufferPolicySelector.UseBufferedInputStream(System.Object)">
+      <summary>Ana bilgisayarın HTTP isteğinin varlık gövdesini arabelleğe alması gerekip gerekmediğini belirten bir değer alır.</summary>
+      <returns>Arabelleğe alma kullanılacaksa true şeklindedir, aksi halde akışla alınan istek kullanılmalıdır.</returns>
+      <param name="hostContext">Ana bilgisayar bağlamı.</param>
+    </member>
+    <member name="M:System.Web.Http.WebHost.WebHostBufferPolicySelector.UseBufferedOutputStream(System.Net.Http.HttpResponseMessage)">
+      <summary>Web ana bilgisayarı için arabelleğe alınan bir çıkış akışı kullanır.</summary>
+      <returns>Arabelleğe alınan çıkış akışı.</returns>
+      <param name="response">Yanıt.</param>
+    </member>
+    <member name="T:System.Web.Http.WebHost.WebHostExceptionCatchBlocks">
+      <summary>Bu derlemede kullanılan yakalama bloklarını sağlar.</summary>
+    </member>
+    <member name="P:System.Web.Http.WebHost.WebHostExceptionCatchBlocks.HttpControllerHandlerBufferContent">
+      <summary>System.Web.Http.WebHost.HttpControllerHandler.WriteBufferedResponseContentAsync içindeki yakalama bloğunun etiketini alır.</summary>
+      <returns>System.Web.Http.WebHost.HttpControllerHandler.WriteBufferedResponseContentAsync içindeki yakalama bloğunun etiketi.</returns>
+    </member>
+    <member name="P:System.Web.Http.WebHost.WebHostExceptionCatchBlocks.HttpControllerHandlerBufferError">
+      <summary>System.Web.Http.WebHost.HttpControllerHandler.WriteErrorResponseContentAsync içindeki yakalama bloğunun etiketini alır.</summary>
+      <returns>System.Web.Http.WebHost.HttpControllerHandler.WriteErrorResponseContentAsync içindeki yakalama bloğunun etiketi.</returns>
+    </member>
+    <member name="P:System.Web.Http.WebHost.WebHostExceptionCatchBlocks.HttpControllerHandlerComputeContentLength">
+      <summary>System.Web.Http.WebHost.HttpControllerHandler.ComputeContentLength içindeki yakalama bloğunun etiketini alır.</summary>
+      <returns>System.Web.Http.WebHost.HttpControllerHandler.ComputeContentLength içindeki yakalama bloğunun etiketi.</returns>
+    </member>
+    <member name="P:System.Web.Http.WebHost.WebHostExceptionCatchBlocks.HttpControllerHandlerStreamContent">
+      <summary>System.Web.Http.WebHost.HttpControllerHandler.WriteStreamedResponseContentAsync içindeki yakalama bloğunun etiketini alır.</summary>
+      <returns>System.Web.Http.WebHost.HttpControllerHandler.WriteStreamedResponseContentAsync içindeki yakalama bloğunun etiketi.</returns>
+    </member>
+    <member name="P:System.Web.Http.WebHost.WebHostExceptionCatchBlocks.HttpWebRoute">
+      <summary>System.Web.Http.WebHost.WebHostExceptionCatchBlocks.HttpWebRoute.GetRouteData içindeki yakalama bloğunun etiketini alır.</summary>
+      <returns>System.Web.Http.WebHost.WebHostExceptionCatchBlocks.HttpWebRoute.GetRouteData içindeki yakalama bloğu.</returns>
+    </member>
+  </members>
+</doc>
