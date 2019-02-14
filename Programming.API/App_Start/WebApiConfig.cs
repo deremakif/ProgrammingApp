@@ -1,4 +1,5 @@
 ﻿using Programming.API.Attributes;
+using Programming.API.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace Programming.API
             // Web API yolları
             config.MapHttpAttributeRoutes();
             config.Filters.Add(new ApiExceptionAttribute());
+            config.MessageHandlers.Add(new APIKeyHandler());
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

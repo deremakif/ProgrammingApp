@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseDAL.cs" />
     <Compile Include="Languages.cs">
       <DependentUpon>ProgrammingModel.tt</DependentUpon>
     </Compile>
@@ -73,6 +74,7 @@
     <Compile Include="Users.cs">
       <DependentUpon>ProgrammingModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="UsersDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="ProgrammingModel.edmx">

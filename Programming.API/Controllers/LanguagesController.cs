@@ -15,10 +15,10 @@ namespace Programming.API.Controllers
     {
         LanguagesDAL languageDAL = new LanguagesDAL();
 
-
+        [Authorize]
         public IHttpActionResult GetSearchByName(string name)
         {
-            return Ok("Name: " + name);
+            return Ok("Name: " + User.Identity.Name);
         }
         public IHttpActionResult GetSearchBySurname(string surname)
         {
@@ -26,6 +26,7 @@ namespace Programming.API.Controllers
         }
 
         [ResponseType(typeof(IEnumerable<Languages>))]
+        [Authorize]
         public IHttpActionResult Get()
         {
             var languages = languageDAL.GetAllLanguages();
