@@ -1,4 +1,5 @@
 ﻿using Programming.API.Attributes;
+using Programming.API.Security;
 using Programming.DAL;
 using System;
 using System.Collections.Generic;
@@ -10,12 +11,12 @@ using System.Web.Http.Description;
 
 namespace Programming.API.Controllers
 {
-
+    
     public class LanguagesController : ApiController
     {
         LanguagesDAL languageDAL = new LanguagesDAL();
 
-        [Authorize]
+        
         public IHttpActionResult GetSearchByName(string name)
         {
             return Ok("Name: " + User.Identity.Name);
@@ -26,7 +27,7 @@ namespace Programming.API.Controllers
         }
 
         [ResponseType(typeof(IEnumerable<Languages>))]
-        [Authorize]
+        [APIAuthorize(Roles = "A, U")]
         public IHttpActionResult Get()
         {
             var languages = languageDAL.GetAllLanguages();
@@ -34,7 +35,7 @@ namespace Programming.API.Controllers
             //Request.CreateResponse(HttpStatusCode.OK, languages);
         }
 
-        [ResponseType(typeof(Languages))]
+        [ResponseType(typeof(Languages))]        
         public IHttpActionResult Get(int id)
         {
             var language = languageDAL.GetLanguageById(id);
@@ -78,7 +79,7 @@ namespace Programming.API.Controllers
                 return Ok(languageDAL.UpdateLanguage(id, language));
             }
         }
-
+        [APIAuthorize(Roles = "A")]
         public IHttpActionResult Delete(int id)
         {
             if (languageDAL.IsThereAnyLanguage(id) == false)

@@ -1,4 +1,5 @@
-﻿using Programming.API.Attributes;
+﻿using Newtonsoft.Json.Serialization;
+using Programming.API.Attributes;
 using Programming.API.Security;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,9 @@ namespace Programming.API
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Formatters.JsonFormatter.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
+            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
         }
     }
 }
